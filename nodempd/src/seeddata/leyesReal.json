@@ -1,0 +1,221 @@
+[
+  {
+    "nombre": "LEY-21595", 
+    "descripcion": "LEY DE DELITOS ECONÓMICOS", 
+   "fechapublicacion": "2023-08-11", 
+    "tdu_nom_pais": "PAIS", 
+    "cdu_nom_pais": "CHILE",
+    "delitos": [
+      {
+        
+        "riesgos": [
+            
+        ]
+      }
+    ]
+  },
+  {
+    "nombre": "LEY-21643", 
+    "descripcion": "LEY KARIN", 
+    "fechapublicacion": "2024-01-14", 
+    "tdu_nom_pais": "PAIS", 
+    "cdu_nom_pais": "CHILE",
+    "delitos": [
+      {
+        
+        "riesgos": [
+            
+        ]
+      }
+    ]
+  },
+  {
+    "nombre": "LEY-19628", 
+    "descripcion": "LEY DE PROTECCION DE LA VIDA PRIVADA", 
+    "fechapublicacion": "1999-08-28", 
+    "tdu_nom_pais": "PAIS", 
+    "cdu_nom_pais": "CHILE",
+    "delitos": [
+      {
+        "nombre": "DATOS DIVULGACION", 
+        "descripcion": "Divulgación indebida de datos personales", 
+        "tdu_nom_sancion": "SANCION", 
+        "cdu_nom_sancion": "MULTA 50 UTM", 
+        "tdu_nom_nivelgravedad": "NIVELGRAVEDAD", 
+        "cdu_nom_nivelgravedad": "MUY ALTA",
+        "riesgos": [
+            { 
+                "nombre": "DAÑO REPUTACIONAL",
+                "descripcion": "Robo de identidad, daño reputacional, pérdida de confianza.", 
+                "tdu_nom_probabilidad": "PROBABILIDAD", 
+                "cdu_nom_probabilidad": "ALTA", 
+                "tdu_nom_impacto": "IMPACTO", 
+                "cdu_nom_impacto": "ALTO", 
+                "tdu_nom_mitigacion": "MITIGACION", 
+                "cdu_nom_mitigacion": "PROCESOS"
+            }
+        ]
+      },
+      {
+        "nombre": "TRATAMIENTO NO AUTORIZADO", 
+        "descripcion": "Tratamiento no autorizado de datos sensibles", 
+        "tdu_nom_sancion": "SANCION", 
+        "cdu_nom_sancion": "MULTA 50 UTM", 
+        "tdu_nom_nivelgravedad": "NIVELGRAVEDAD", 
+        "cdu_nom_nivelgravedad": "MUY ALTA",
+        "riesgos": [
+            { 
+                "nombre": "DISCRIMINACIÓN",
+                "descripcion": "Discriminación, violación de la intimidad, impacto psicológico", 
+                "tdu_nom_probabilidad": "PROBABILIDAD", 
+                "cdu_nom_probabilidad": "ALTA", 
+                "tdu_nom_impacto": "IMPACTO", 
+                "cdu_nom_impacto": "ALTO", 
+                "tdu_nom_mitigacion": "MITIGACION", 
+                "cdu_nom_mitigacion": "PROCESOS"
+            }
+        ]
+      },
+      {
+        "nombre": "USO INDEBIDO", 
+        "descripcion": "Uso indebido de datos con fines comerciales", 
+        "tdu_nom_sancion": "SANCION", 
+        "cdu_nom_sancion": "MULTA 50 UTM", 
+        "tdu_nom_nivelgravedad": "NIVELGRAVEDAD", 
+        "cdu_nom_nivelgravedad": "MUY ALTA",
+        "riesgos": [
+            { 
+                "nombre": "DAÑO CONFIANZA",
+                "descripcion": "Daño a la confianza del cliente, sanciones legales", 
+                "tdu_nom_probabilidad": "PROBABILIDAD", 
+                "cdu_nom_probabilidad": "ALTA", 
+                "tdu_nom_impacto": "IMPACTO", 
+                "cdu_nom_impacto": "ALTO", 
+                "tdu_nom_mitigacion": "MITIGACION", 
+                "cdu_nom_mitigacion": "PROCESOS"
+            }
+        ]
+      },
+      {
+        "nombre": "FALSEDAD", 
+        "descripcion": "Falsedad o incumplimiento en la actualización de datos", 
+        "tdu_nom_sancion": "SANCION", 
+        "cdu_nom_sancion": "MULTA 50 UTM", 
+        "tdu_nom_nivelgravedad": "NIVELGRAVEDAD", 
+        "cdu_nom_nivelgravedad": "MUY ALTA",
+        "riesgos": [
+            { 
+                "nombre": "INFORMACIÓN INCORRECTA",
+                "descripcion": "Información incorrecta, decisiones erróneas basadas en datos desactualizados", 
+                "tdu_nom_probabilidad": "PROBABILIDAD", 
+                "cdu_nom_probabilidad": "ALTA", 
+                "tdu_nom_impacto": "IMPACTO", 
+                "cdu_nom_impacto": "ALTO", 
+                "tdu_nom_mitigacion": "MITIGACION", 
+                "cdu_nom_mitigacion": "PROCESOS"
+            }
+        ]
+      },
+      {
+        "nombre": "DERECHOS TITULAR", 
+        "descripcion": "Negativa a derechos del titular", 
+        "tdu_nom_sancion": "SANCION", 
+        "cdu_nom_sancion": "MULTA 50 UTM", 
+        "tdu_nom_nivelgravedad": "NIVELGRAVEDAD", 
+        "cdu_nom_nivelgravedad": "MUY ALTA",
+        "riesgos": [
+            { 
+                "nombre": "DEMANDAS LEGALES",
+                "descripcion": "Demandas legales, daño reputacional", 
+                "tdu_nom_probabilidad": "PROBABILIDAD", 
+                "cdu_nom_probabilidad": "ALTA", 
+                "tdu_nom_impacto": "IMPACTO", 
+                "cdu_nom_impacto": "ALTO", 
+                "tdu_nom_mitigacion": "MITIGACION", 
+                "cdu_nom_mitigacion": "PROCESOS"
+            }
+        ]
+      },
+      {
+        "nombre": "NO ELIMINACION DE DATOS", 
+        "descripcion": "Negativa a derechos del titular", 
+        "tdu_nom_sancion": "SANCION", 
+        "cdu_nom_sancion": "MULTA 50 UTM", 
+        "tdu_nom_nivelgravedad": "NIVELGRAVEDAD", 
+        "cdu_nom_nivelgravedad": "MUY ALTA",
+        "riesgos": [
+            { 
+                "nombre": "SOBRECARGA SISTEMAS",
+                "descripcion": "Sobrecarga de sistemas, uso indebido de datos desactualizados", 
+                "tdu_nom_probabilidad": "PROBABILIDAD", 
+                "cdu_nom_probabilidad": "ALTA", 
+                "tdu_nom_impacto": "IMPACTO", 
+                "cdu_nom_impacto": "ALTO", 
+                "tdu_nom_mitigacion": "MITIGACION", 
+                "cdu_nom_mitigacion": "PROCESOS"
+            }
+        ]
+      },
+      {
+        "nombre": "FILTRACION DATOS MEDICOS", 
+        "descripcion": "Filtración de datos médicos o sensibles", 
+        "tdu_nom_sancion": "SANCION", 
+        "cdu_nom_sancion": "MULTA 50 UTM", 
+        "tdu_nom_nivelgravedad": "NIVELGRAVEDAD", 
+        "cdu_nom_nivelgravedad": "MUY ALTA",
+        "riesgos": [
+            { 
+                "nombre": "DAÑO EMOCIONAL",
+                "descripcion": "Daño emocional, discriminación, pérdida de confianza en el sistema de salud", 
+                "tdu_nom_probabilidad": "PROBABILIDAD", 
+                "cdu_nom_probabilidad": "ALTA", 
+                "tdu_nom_impacto": "IMPACTO", 
+                "cdu_nom_impacto": "ALTO", 
+                "tdu_nom_mitigacion": "MITIGACION", 
+                "cdu_nom_mitigacion": "PROCESOS"
+            }
+        ]
+      },
+      {
+        "nombre": "DAÑOS TERCEROS", 
+        "descripcion": "Responsabilidad por daños a terceros", 
+        "tdu_nom_sancion": "SANCION", 
+        "cdu_nom_sancion": "MULTA 50 UTM", 
+        "tdu_nom_nivelgravedad": "NIVELGRAVEDAD", 
+        "cdu_nom_nivelgravedad": "MUY ALTA",
+        "riesgos": [
+            { 
+                "nombre": "PERDIDA FINANCIERA",
+                "descripcion": "Pérdidas financieras, demandas legales, daño reputacional", 
+                "tdu_nom_probabilidad": "PROBABILIDAD", 
+                "cdu_nom_probabilidad": "ALTA", 
+                "tdu_nom_impacto": "IMPACTO", 
+                "cdu_nom_impacto": "ALTO", 
+                "tdu_nom_mitigacion": "MITIGACION", 
+                "cdu_nom_mitigacion": "PROCESOS"
+            }
+        ]
+      },
+      {
+        "nombre": "OMISION DATOS", 
+        "descripcion": "Omisión de registro de bases públicas", 
+        "tdu_nom_sancion": "SANCION", 
+        "cdu_nom_sancion": "MULTA 50 UTM", 
+        "tdu_nom_nivelgravedad": "NIVELGRAVEDAD", 
+        "cdu_nom_nivelgravedad": "MUY ALTA",
+        "riesgos": [
+            { 
+                "nombre": "SANCION ADMINISTRATIVA",
+                "descripcion": "Riesgo de sanción administrativa", 
+                "tdu_nom_probabilidad": "PROBABILIDAD", 
+                "cdu_nom_probabilidad": "ALTA", 
+                "tdu_nom_impacto": "IMPACTO", 
+                "cdu_nom_impacto": "ALTO", 
+                "tdu_nom_mitigacion": "MITIGACION", 
+                "cdu_nom_mitigacion": "PROCESOS"
+            }
+        ]
+      }
+    ]
+  }
+]

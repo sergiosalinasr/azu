@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <h3>MAESTRO DE CDUS</h3><br>
+    <button type="button" class="btn btn-primary" (click)="nuevaCdu()">Nuevo Cdu</button>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Tabla</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cdu of CduCamposArray">
+                <th scope="row">{{ cdu.id }}</th>
+                <td>{{ cdu.nombreCorto }}</td>
+                <td>{{ cdu.descripcionLarga }}</td>
+                <!--
+                <td>{{ cdu.idley }}</td>
+                -->
+                <td>{{ cdu.desctdu }}</td>
+                <td>
+                    <button type="button" class="btn btn-danger me-1" (click)="deleteCdu(cdu.id); $event.stopPropagation()">D</button>
+                    <button type="button" class="btn btn-primary" (click)="editarCdu(cdu.id); $event.stopPropagation()">U</button>
+                </td>
+                
+            </tr>
+        </tbody>
+    </table>
+</div>

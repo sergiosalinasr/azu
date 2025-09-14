@@ -1,0 +1,17 @@
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Panel de Administración</h2>
+  
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let tarea of tareas">
+      <div class="card shadow-sm h-100">
+        <div class="card-body d-flex flex-column justify-content-between">
+          <h5 class="card-title">{{ tarea.titulo }}</h5>
+          <p class="card-text">{{ tarea.descripcion }}</p>
+          <button class="btn btn-primary mt-auto" (click)="ejecutarTarea(tarea.endpoint)">
+            Ejecutar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

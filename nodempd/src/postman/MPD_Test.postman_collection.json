@@ -1,0 +1,2036 @@
+{
+	"info": {
+		"_postman_id": "bb4d76f6-8879-489c-9d01-953f8683859b",
+		"name": "MPD_Test",
+		"description": "Esta colección se usa para generar las pruebas con newman.\n\nSe traen las rutinas desde la colección MPD que estén funcionando bien y por lo tanto para incuirlas en la secuencia de pruebas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16987425"
+	},
+	"item": [
+		{
+			"name": "TABLAS_PPAL",
+			"item": [
+				{
+					"name": "Healthy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has correct message\", function () {\r",
+									"    const jsonData = pm.response.json(); // Obtén el cuerpo de la respuesta como JSON\r",
+									"    pm.expect(jsonData).to.have.property(\"message\", \"Nodempd: Healthy\"); // Valida que el mensaje sea exactamente \"Nodempd: Healthy\"\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body is exactly as expected\", function () {\r",
+									"    const expectedResponse = { message: \"Nodempd: Healthy\" }; // Define la respuesta esperada\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.eql(expectedResponse); // Compara toda la respuesta JSON con la esperada\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has access_token\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"access_token\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Obtener access_token y refresh_token\", function () {\r",
+									"    pm.environment.set(\"v_access_token\", \"\");\r",
+									"    pm.environment.set(\"v_refresh_token\", \"\");\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.environment.set(\"v_access_token\", jsonData.access_token);\r",
+									"    pm.environment.set(\"v_refresh_token\", jsonData.refresh_token);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"usuariop01\",\r\n  \"password\": \"usuariop01\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refreshtoken",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has access_token\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"access_token\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Obtener access_token y refresh_token\", function () {\r",
+									"    pm.environment.set(\"v_access_token\", \"\");\r",
+									"    pm.environment.set(\"v_refresh_token\", \"\");\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.environment.set(\"v_access_token\", jsonData.access_token);\r",
+									"    pm.environment.set(\"v_refresh_token\", jsonData.refresh_token);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"refresh_token\":  \"{{v_refresh_token}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/refreshtoken",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"refreshtoken"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createtdu",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has ID\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"id\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has nombreCorto\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"nombreCorto\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Obtener id\", function () {\r",
+									"    pm.environment.set(\"v_id\", 0);\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.environment.set(\"v_id\", jsonData.id);\r",
+									"    console.log(\"Id CREADO:\")\r",
+									"    console.log(pm.environment.get(\"v_id\"))\r",
+									"});\r",
+									"\r",
+									"// Verifica que el campo 'nombreCorto' en la respuesta sea igual al enviado en el cuerpo de la solicitud\r",
+									"pm.test(\"Response has the correct nombreCorto\", function () {\r",
+									"    const nombreCortoEnviado = pm.request.body ? JSON.parse(pm.request.body).nombreCorto : null; // Extrae el valor enviado en el cuerpo de la solicitud\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.nombreCorto).to.equal(nombreCortoEnviado); // Compara con el valor en la respuesta\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombreCorto\": \"TDUPOSTMAN\",\r\n  \"descripcionLarga\": \"TDUPOSTMAN\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/tdu/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tdu",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "gettdu",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains array of records\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData.length).to.be.above(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Each record has nombre and descripcion\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    jsonData.forEach(item => {\r",
+									"        pm.expect(item).to.have.property(\"nombreCorto\");\r",
+									"        pm.expect(item).to.have.property(\"descripcionLarga\");\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/tdu/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tdu",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTDUById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Ultimo id creado\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    console.log(\"Ultimo id creado\")\r",
+									"    console.log(jsonData.id)\r",
+									"    //pm.expect(jsonData.id).to.eql(pm.environment.get(\"v_id\"));\r",
+									"    pm.expect(jsonData[0].id).to.eql(pm.environment.get(\"v_id\"));\r",
+									"\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/tdu/{{v_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tdu",
+								"{{v_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "gettducampos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"    "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/tdu/gettducampos",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tdu",
+								"gettducampos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createcdu",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has ID\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"id\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has nombreCorto\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"nombreCorto\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Obtener id\", function () {\r",
+									"    pm.environment.set(\"v_id_cdu\", 0);\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.environment.set(\"v_id_cdu\", jsonData.id);\r",
+									"    console.log(\"Id CREADO:\")\r",
+									"    console.log(pm.environment.get(\"v_id_cdu\"))\r",
+									"});\r",
+									"\r",
+									"// Verifica que el campo 'nombreCorto' en la respuesta sea igual al enviado en el cuerpo de la solicitud\r",
+									"pm.test(\"Response has the correct nombreCorto\", function () {\r",
+									"    const nombreCortoEnviado = pm.request.body ? JSON.parse(pm.request.body).nombreCorto : null; // Extrae el valor enviado en el cuerpo de la solicitud\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.nombreCorto).to.equal(nombreCortoEnviado); // Compara con el valor en la respuesta\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id_tdu\": {{v_id}},\r\n  \"nombreCorto\": \"CDUPOSTMAN\",\r\n  \"descripcionLarga\": \"CDUPOSTMAN\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/cdu",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cdu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getcdu",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains array of records\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData.length).to.be.above(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Each record has nombre and descripcion\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    jsonData.forEach(item => {\r",
+									"        pm.expect(item).to.have.property(\"nombreCorto\");\r",
+									"        pm.expect(item).to.have.property(\"descripcionLarga\");\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/cdu/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cdu",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCDUById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Ultimo id creado\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    console.log(\"Ultimo id creado\")\r",
+									"    console.log(jsonData.id)\r",
+									"    //pm.expect(jsonData.id).to.eql(pm.environment.get(\"v_id_cdu\"));\r",
+									"    pm.expect(jsonData[0].id).to.eql(pm.environment.get(\"v_id_cdu\"));\r",
+									"    //pm.expect(jsonData.id_tdu).to.eql(pm.environment.get(\"v_id\"));\r",
+									"    pm.expect(jsonData[0].id_tdu).to.eql(pm.environment.get(\"v_id\"));\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/cdu/{{v_id_cdu}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cdu",
+								"{{v_id_cdu}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getcducampos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains array of records\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData.length).to.be.above(0);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/cdu/getcducampos",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cdu",
+								"getcducampos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getcducamposid_tdu",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains array of records\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData.length).to.be.above(0);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/cdu/getcducampos/{{v_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cdu",
+								"getcducampos",
+								"{{v_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createley",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has ID\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"id\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has nombreCorto\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"nombre\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Obtener id\", function () {\r",
+									"    pm.environment.set(\"v_id_ley\", 0);\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.environment.set(\"v_id_ley\", jsonData.id);\r",
+									"    console.log(\"Id ley CREADO:\")\r",
+									"    console.log(pm.environment.get(\"v_id_ley\"))\r",
+									"});\r",
+									"\r",
+									"// Verifica que el campo 'nombre' en la respuesta sea igual al enviado en el cuerpo de la solicitud\r",
+									"pm.test(\"Response has the correct nombre\", function () {\r",
+									"    const nombreEnviado = pm.request.body ? JSON.parse(pm.request.body).nombre : null; // Extrae el valor enviado en el cuerpo de la solicitud\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.nombre).to.equal(nombreEnviado); // Compara con el valor en la respuesta\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"LEYPRUEBA\",\r\n  \"descripcion\": \"Descripción LEYPRUEBA \",\r\n  \"fechapublicacion\": \"2024-12-08\",\r\n  \"pais\": {{v_id_cdu}}\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/ley",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"ley"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getley",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains array of records\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData.length).to.be.above(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Each record has nombre and descripcion\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    jsonData.forEach(item => {\r",
+									"        pm.expect(item).to.have.property(\"nombre\");\r",
+									"        pm.expect(item).to.have.property(\"descripcion\");\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/ley",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"ley"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getleyById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Ultimo id creado\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    console.log(\"Ultimo id creado\")\r",
+									"    console.log(jsonData.id)\r",
+									"    pm.expect(jsonData[0].id).to.eql(pm.environment.get(\"v_id_ley\"));\r",
+									"\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/ley/{{v_id_ley}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"ley",
+								"{{v_id_ley}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getleycampos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains array of records\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData.length).to.be.above(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Each record has descripcionpais\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    jsonData.forEach(item => {\r",
+									"        pm.expect(item).to.have.property(\"descripcionpais\");\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/ley/getleycampos",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"ley",
+								"getleycampos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createdelito",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has ID\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"id\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has nombre\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"nombre\");\r",
+									"});\r",
+									"\r",
+									"// obtiene la id del delito creado para guardarlo en su variable\r",
+									"pm.test(\"Obtener id\", function () {\r",
+									"    pm.environment.set(\"v_id_delito\", 0);\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.environment.set(\"v_id_delito\", jsonData.id);\r",
+									"    console.log(\"Id delito CREADO:\")\r",
+									"    console.log(pm.environment.get(\"v_id_delito\"))\r",
+									"});\r",
+									"\r",
+									"// Verifica que el campo 'nombre' en la respuesta sea igual al enviado en el cuerpo de la solicitud\r",
+									"pm.test(\"Response has the correct nombre\", function () {\r",
+									"    const nombreEnviado = pm.request.body ? JSON.parse(pm.request.body).nombre : null; // Extrae el valor enviado en el cuerpo de la solicitud\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.nombre).to.equal(nombreEnviado); // Compara con el valor en la respuesta\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"v_sancion\", 3);\r",
+									"pm.environment.set(\"v_nivelgravedad\", 10);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idley\": {{v_id_ley}},\r\n  \"nombre\": \"DELITOPRUEBA\",\r\n  \"descripcion\": \"DESCRIPCION DELITOPRUEBA \",\r\n  \"sancion\": {{v_sancion}},\r\n  \"nivelgravedad\": {{v_nivelgravedad}}\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/delito",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"delito"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getdelito",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains array of records\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData.length).to.be.above(0);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/delito",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"delito"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getdelitoById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Ultimo id creado\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    console.log(\"Ultimo id creado\")\r",
+									"    console.log(jsonData.id)\r",
+									"    pm.expect(jsonData[0].id).to.eql(pm.environment.get(\"v_id_delito\"));\r",
+									"\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/delito/{{v_id_delito}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"delito",
+								"{{v_id_delito}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getdelitocampos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains array of records\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData.length).to.be.above(0);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/delito/getdelitocampos",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"delito",
+								"getdelitocampos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getdelitocamposid_ley",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains array of records\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData.length).to.be.above(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Each record has descsancion and descnivelgravedad\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    jsonData.forEach(item => {\r",
+									"        pm.expect(item).to.have.property(\"descsancion\");\r",
+									"        pm.expect(item).to.have.property(\"descnivelgravedad\");\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/delito/getdelitocampos/{{v_id_ley}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"delito",
+								"getdelitocampos",
+								"{{v_id_ley}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createriesgo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has ID\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"id\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has nombreCorto\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"nombre\");\r",
+									"});\r",
+									"\r",
+									"// Guarda id de riesgo creado para pruebas\r",
+									"pm.test(\"Obtener id\", function () {\r",
+									"    pm.environment.set(\"v_id_riesgo\", 0);\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.environment.set(\"v_id_riesgo\", jsonData.id);\r",
+									"    console.log(\"Id riesgo CREADO:\")\r",
+									"    console.log(pm.environment.get(\"v_id_riesgo\"))\r",
+									"});\r",
+									"\r",
+									"// Verifica que el campo 'nombre' en la respuesta sea igual al enviado en el cuerpo de la solicitud\r",
+									"pm.test(\"Response has the correct nombre\", function () {\r",
+									"    const nombreEnviado = pm.request.body ? JSON.parse(pm.request.body).nombre : null; // Extrae el valor enviado en el cuerpo de la solicitud\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.nombre).to.equal(nombreEnviado); // Compara con el valor en la respuesta\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"iddelito\": {{v_id_delito}},\r\n  \"nombre\": \"RIESGOPRUEBA\",\r\n  \"descripcion\": \"DESCRIPCION RIESGOPRUEBA \",\r\n  \"probabilidad\": {{v_id_cdu}},\r\n  \"impacto\": {{v_id_cdu}},\r\n  \"mitigacion\": {{v_id_cdu}}\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/riesgo",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"riesgo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getriesgo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains array of records\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData.length).to.be.above(0);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/riesgo",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"riesgo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getriesgoById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Ultimo id creado\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    console.log(\"Ultimo id creado\")\r",
+									"    console.log(jsonData.id)\r",
+									"    pm.expect(jsonData[0].id).to.eql(pm.environment.get(\"v_id_riesgo\"));\r",
+									"\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/riesgo/{{v_id_riesgo}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"riesgo",
+								"{{v_id_riesgo}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getriesgocampos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains array of records\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData.length).to.be.above(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Each record has descdelito, descprobabilidad, descimpacto and descmitigacion\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    jsonData.forEach(item => {\r",
+									"        pm.expect(item).to.have.property(\"descdelito\");\r",
+									"        pm.expect(item).to.have.property(\"descprobabilidad\");\r",
+									"        pm.expect(item).to.have.property(\"descimpacto\");\r",
+									"        pm.expect(item).to.have.property(\"descmitigacion\");\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/riesgo/getriesgocampos",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"riesgo",
+								"getriesgocampos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getriesgocamposid_delito",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains array of records\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData.length).to.be.above(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Each record has descdelito, descprobabilidad, descimpacto and descmitigacion\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    jsonData.forEach(item => {\r",
+									"        pm.expect(item).to.have.property(\"descdelito\");\r",
+									"        pm.expect(item).to.have.property(\"descprobabilidad\");\r",
+									"        pm.expect(item).to.have.property(\"descimpacto\");\r",
+									"        pm.expect(item).to.have.property(\"descmitigacion\");\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/riesgo/getriesgocampos/{{v_id_delito}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"riesgo",
+								"getriesgocampos",
+								"{{v_id_delito}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateriesgo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Ultimo id actualizado\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    console.log(\"Ultimo id creado\")\r",
+									"    console.log(jsonData.id)\r",
+									"    pm.expect(jsonData.id).to.eql(pm.environment.get(\"v_id_riesgo\"));\r",
+									"\r",
+									"});\r",
+									"\r",
+									"// Verifica que el campo 'nombre' en la respuesta sea igual al enviado en el cuerpo de la solicitud\r",
+									"pm.test(\"Response has the correct nombre\", function () {\r",
+									"    const nombreEnviado = pm.request.body ? JSON.parse(pm.request.body).nombre : null; // Extrae el valor enviado en el cuerpo de la solicitud\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.nombre).to.equal(nombreEnviado); // Compara con el valor en la respuesta\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"iddelito\": {{v_id_delito}},\r\n  \"nombre\": \"RIESGOUPDATE\",\r\n  \"descripcion\": \"DESCRIPCION RIESGO UPDATE\",\r\n  \"probabilidad\": {{v_id_cdu}},\r\n  \"impacto\": {{v_id_cdu}},\r\n  \"mitigacion\": {{v_id_cdu}}\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/riesgo/{{v_id_riesgo}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"riesgo",
+								"{{v_id_riesgo}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatedelito",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Ultimo id actualizado\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    console.log(\"Ultimo id creado\")\r",
+									"    console.log(jsonData.id)\r",
+									"    pm.expect(jsonData.id).to.eql(pm.environment.get(\"v_id_delito\"));\r",
+									"\r",
+									"});\r",
+									"\r",
+									"// Verifica que el campo 'nombre' en la respuesta sea igual al enviado en el cuerpo de la solicitud\r",
+									"pm.test(\"Response has the correct nombre\", function () {\r",
+									"    const nombreEnviado = pm.request.body ? JSON.parse(pm.request.body).nombre : null; // Extrae el valor enviado en el cuerpo de la solicitud\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.nombre).to.equal(nombreEnviado); // Compara con el valor en la respuesta\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idley\": {{v_id_ley}},\r\n  \"nombre\": \"DELITOUPDATE\",\r\n  \"descripcion\": \"DESCRIPCION DELITO UPDATE\",\r\n  \"sancion\": {{v_sancion}},\r\n  \"nivelgravedad\": {{v_nivelgravedad}}\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/delito/{{v_id_delito}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"delito",
+								"{{v_id_delito}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateley",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Ultimo id actualizado\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    console.log(\"Ultimo id creado\")\r",
+									"    console.log(jsonData.id)\r",
+									"    pm.expect(jsonData.id).to.eql(pm.environment.get(\"v_id_ley\"));\r",
+									"\r",
+									"});\r",
+									"\r",
+									"// Verifica que el campo 'nombre' en la respuesta sea igual al enviado en el cuerpo de la solicitud\r",
+									"pm.test(\"Response has the correct nombre\", function () {\r",
+									"    const nombreEnviado = pm.request.body ? JSON.parse(pm.request.body).nombre : null; // Extrae el valor enviado en el cuerpo de la solicitud\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.nombre).to.equal(nombreEnviado); // Compara con el valor en la respuesta\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"LEYUPDATE\",\r\n  \"descripcion\": \"Descripción LEYUPDATE\",\r\n  \"fechapublicacion\": \"2024-12-07\",\r\n  \"pais\": {{v_id_cdu}}\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/ley/{{v_id_ley}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"ley",
+								"{{v_id_ley}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CDU_Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Ultimo id actualizado\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    console.log(\"Ultimo id creado\")\r",
+									"    console.log(jsonData.id)\r",
+									"    pm.expect(jsonData.id).to.eql(pm.environment.get(\"v_id_cdu\"));\r",
+									"\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id_tdu\": {{v_id}},\r\n  \"nombreCorto\": \"CDUPOSTMAN\",\r\n  \"descripcionLarga\": \"UPDATEPOSTMAN\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/cdu/{{v_id_cdu}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cdu",
+								"{{v_id_cdu}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TDU_Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Ultimo id actualizado\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    console.log(\"Ultimo id creado\")\r",
+									"    console.log(jsonData.id)\r",
+									"    pm.expect(jsonData.id).to.eql(pm.environment.get(\"v_id\"));\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombreCorto\": \"TDUPOSTMAN\",\r\n  \"descripcionLarga\": \"UPDATETDUPRUEBA\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/tdu/{{v_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tdu",
+								"{{v_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteriesgo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Ultimo id eliminado\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    console.log(\"Ultimo id eliminado\")\r",
+									"    console.log(jsonData.eliminado)\r",
+									"    pm.expect(jsonData.eliminado).to.eql(\"ELIMINADO\");\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/riesgo/{{v_id_riesgo}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"riesgo",
+								"{{v_id_riesgo}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletedelito",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Ultimo id eliminado\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    console.log(\"Ultimo id eliminado\")\r",
+									"    console.log(jsonData.eliminado)\r",
+									"    pm.expect(jsonData.eliminado).to.eql(\"ELIMINADO\");\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/delito/{{v_id_delito}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"delito",
+								"{{v_id_delito}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteley",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Ultimo id eliminado\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    console.log(\"Ultimo id eliminado\")\r",
+									"    console.log(jsonData.eliminado)\r",
+									"    pm.expect(jsonData.eliminado).to.eql(\"ELIMINADO\");\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/ley/{{v_id_ley}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"ley",
+								"{{v_id_ley}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CDU_Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Ultimo id eliminado\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    console.log(\"Ultimo id eliminado\")\r",
+									"    console.log(jsonData.eliminado)\r",
+									"    pm.expect(jsonData.eliminado).to.eql(\"ELIMINADO\");\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/cdu/{{v_id_cdu}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cdu",
+								"{{v_id_cdu}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TDU_Delete_CDU",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Ultimo id eliminado\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    console.log(\"Ultimo id eliminado\")\r",
+									"    console.log(jsonData.eliminado)\r",
+									"    pm.expect(jsonData.eliminado).to.eql(\"ELIMINADO\");\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{v_access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/tdu/{{v_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tdu",
+								"{{v_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

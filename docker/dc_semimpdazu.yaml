@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+
+  s_nodeapp:
+    image: i_nodempdazu # Imagen de tu aplicación Node.js
+    container_name: c_nodempd
+    build:
+      context: .
+      dockerfile: src/docker/Dockerfile # Ruta al Dockerfile de tu aplicación
+    ports:
+      - "3000:3000"
+    environment:
+      DB_USER: root
+      DB_HOST: s_pgsqlmpd # Nombre del servicio de PostgreSQL
+      DB_PASSWORD: root
+      DB_NAME: root
+      DB_SCHEMA: mpd
+      DB_PORT: 5432
+      KEYCLOAK_URL: http://s_keycloakmpd:8080 # Nombre del servicio de Keycloak
+      KEYCLOAK_AUTH: http://s_keycloakmpd:8080/auth
+    depends_on:
+      - s_pgsqlmpd
+      - s_keycloakmpd
+
+  s_pgsqlmpd:
+    image: postgres
+    container_name: c_pgsqlmpd
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: root
+    volumes:
+      - ${VOLUME_PGSQL}:/var/lib/postgresql/data # Persistencia de datos
+
+  s_pgadmin:
+    image: dpage/pgadmin4
+    container_name: c_pgadminazu
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "sergio.salinasr@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+    ports:
+      - "85:80"
+    volumes:
+      - ${VOLUME_PGADMIN}:/var/lib/pgadmin
+    depends_on:
+      - s_pgsqlmpd
+
+  s_keycloakmpd:
+    image: quay.io/keycloak/keycloak:12.0.2
+    container_name: c_keycloakmpdazu
+    ports:
+      - "8081:8080"
+    restart: unless-stopped
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+    volumes:
+      - ${VOLUME_KEYCLOAK_DATA}:/opt/jboss/keycloak/standalone/data
+      - ${VOLUME_KEYCLOAK_LOGS}:/opt/jboss/keycloak/standalone/log
+
+# docker compose --env-file .env -f docker/dc_semimpdazu.yaml -p dc_semimpdazu up -d
+# EN LA CREACIÓN DEL SERVER EN PGADMIN, LA PRIMERA VEZ
+# considerar el nombre del host como (contenedor) en este caso: c_pgsqlmpd

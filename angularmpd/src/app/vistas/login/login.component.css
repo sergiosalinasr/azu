@@ -1,0 +1,26 @@
+/* Quita márgenes y paddings globales */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* Contenedor principal */
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75vh; /* Ocupa toda la altura de la pantalla */
+  background-color: #f5f5f5; /* Cambia el fondo según sea necesario */
+}
+
+/* Contenedor del formulario */
+#formContent {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 400px; /* Ancho máximo */
+}

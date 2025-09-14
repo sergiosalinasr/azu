@@ -1,0 +1,50 @@
+<div class="container-fluid d-flex p-0">
+  <!-- Menú Lateral -->
+  <div class="sidebar bg-primary text-light p-3" style="width: 250px;">
+    <h2 class="h5 font-weight-bold mb-3">Menú Lateral</h2>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item bg-secondary text-white" *ngFor="let option of menuOptions" [hidden]="!puedeVerOpcion(option.roles)">
+        <button
+          *ngIf="option.submenu; else simpleOption"
+          class="btn btn-link text-white w-100 text-left d-flex justify-content-between align-items-center"
+          (click)="toggleSubmenuCookie_NoVa(option.id)">
+          {{ option.title }}
+          <span *ngIf="activeSubmenu === option.id">▲</span>
+          <span *ngIf="activeSubmenu !== option.id">▼</span>
+        </button>
+        <ng-template #simpleOption>
+          <button
+            class="btn btn-link text-white w-100 text-left"
+            *ngIf="option.title === 'Logout'; else linkOption"
+            (click)="logout()">
+            {{ option.title }}
+          </button>
+          <ng-template #linkOption>
+  <ng-container *ngIf="option.externalUrl; else internalLink">
+    <a [href]="option.externalUrl" target="_blank" class="btn btn-link text-white w-100 text-left">
+      {{ option.title }}
+    </a>
+  </ng-container>
+  <ng-template #internalLink>
+    <a [routerLink]="option.route" class="btn btn-link text-white w-100 text-left">
+      {{ option.title }}
+    </a>
+  </ng-template>
+</ng-template>
+        </ng-template>
+        <ul *ngIf="activeSubmenu === option.id" class="list-group list-group-flush pl-3">
+          <li class="list-group-item bg-info text-white" *ngFor="let submenu of option.submenu" [hidden]="!puedeVerOpcion(submenu.roles)">
+            <a [routerLink]="submenu.route" class="text-black">{{ submenu.title }}</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Área de Trabajo Principal -->
+  <main class="main-content flex-grow-1 p-4">
+    <router-outlet></router-outlet>
+  </main>
+</div>
+
+  

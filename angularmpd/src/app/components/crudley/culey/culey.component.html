@@ -1,0 +1,75 @@
+<a class="navbar-brand">
+    CRUD Tabla Ley2 
+</a>
+
+<div class="container  bg-light text-white p-3">
+    <div class="row">
+        <div class="col-md-12 mt-2">
+            <div class="card mt-4">
+                <div class="card-body">
+                    <div *ngIf="selectedLey.id == 0; else editMode" class="card-title">
+                        Agregar nueva Ley
+                      </div>
+                      <ng-template #editMode>
+                        <div class="card-title">
+                          Editar Ley
+                        </div>
+                      </ng-template>
+                      <div class="form-group">
+                        <input 
+                          type="text" 
+                          [(ngModel)]="selectedLey.nombre" 
+                          (ngModelChange)="convertirAMayusculas($event)" 
+                          placeholder="Nombre Ley" 
+                          class="form-group w50"
+                        >
+                      </div>
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="selectedLey.descripcion" placeholder="Descripción Ley" class="form-group w-75">
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <label for="fechapublicacion">Fecha de publicación:</label>
+                        <input 
+                          type="text" 
+                          id="fechapublicacion" 
+                          [(ngModel)]="selectedLey.fechapublicacion" 
+                          placeholder="dd-mm-aaaa" 
+                          (ngModelChange)="esFechaValida($event)" 
+                          [ngClass]="{'is-invalid': !isValidFecha}"
+                        />
+                        <div *ngIf="!isValidFecha" class="text-danger">
+                          Formato inválido. Usa dd-mm-aaaa.
+                        </div>
+                      </div>
+                      <div class="form-group d-flex align-items-center">
+                        <label for="pais" class="me-2">Seleccione un País:</label>
+                        <input 
+                          type="text" 
+                          [(ngModel)]="selectedLey.pais" 
+                          placeholder="Id tabla ref" 
+                          class="form-control me-2 w-auto" 
+                          readonly
+                        >
+                        <select 
+                          id="pais" 
+                          [(ngModel)]="selectedLey.pais" 
+                          class="form-control w-auto"
+                        >
+                          <option *ngFor="let pais of paisArray" [value]="pais.id">
+                            {{ pais.nombreCorto }}
+                          </option>
+                        </select>
+                      </div>
+                      
+                    <button   
+                        (click)="addOrEdit()"
+                        class="btn btn-primary">
+                        Submit
+                    </button>
+                    <button type="button" class="btn btn-primary" (click)="cancelar()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

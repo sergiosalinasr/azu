@@ -1,0 +1,24 @@
+<div class="chat-container">
+  <h2>Consultas a la IA de {{ id_Cliente }}</h2>
+
+  <!-- Historial con scroll -->
+  <div class="chat-history" #chatHistoryContainer>
+    <div *ngFor="let chat of chatHistory" [ngClass]="chat.role">
+      <strong *ngIf="chat.role === 'user'">Tú:</strong>
+      <strong *ngIf="chat.role === 'bot'">IA:</strong>
+      <strong *ngIf="chat.role === 'system'">Sistema:</strong>
+      {{ chat.message }}
+    </div>
+  </div>
+
+  <!-- Input fijo abajo -->
+  <div class="chat-input">
+    <input
+      type="text"
+      [(ngModel)]="userInput"
+      placeholder="Escribe tu consulta..."
+      (keyup.enter)="sendMessage()"
+    />
+    <button (click)="sendMessage()">Enviar</button>
+  </div>
+</div>

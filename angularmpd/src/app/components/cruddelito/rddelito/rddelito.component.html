@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <h3>MAESTRO DE DELITOS</h3><br>
+    <button type="button" class="btn btn-primary" (click)="nuevaDelito()">Nuevo Delito</button>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Ley</th>
+                <th scope="col">Sancion</th>
+                <th scope="col">Nivel Gravedad</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let delito of DelitoCamposArray">
+                <th scope="row">{{ delito.id }}</th>
+                <td>{{ delito.nombre }}</td>
+                <td>{{ delito.descripcion }}</td>
+                <!--
+                <td>{{ delito.idley }}</td>
+                -->
+                <td>{{ delito.descley }}</td>
+                <!--
+                <td>{{ delito.sancion }}</td>
+                -->
+                <td>{{ delito.descsancion }}</td>
+                <!--
+                <td>{{ delito.nivelgravedad }}</td>
+                -->
+                <td>{{ delito.descnivelgravedad }}</td>
+                <td>
+                    <button type="button" class="btn btn-danger me-1" (click)="deleteDelito(delito.id); $event.stopPropagation()">D</button>
+                    <button type="button" class="btn btn-primary" (click)="editarDelito(delito.id); $event.stopPropagation()">U</button>
+                    <button type="button" class="btn btn-primary" (click)="irRiesgo(delito.id); $event.stopPropagation()">I</button>
+                </td>
+                
+            </tr>
+        </tbody>
+    </table>
+</div>

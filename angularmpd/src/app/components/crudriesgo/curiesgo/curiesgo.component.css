@@ -1,0 +1,55 @@
+/* Reducir más el tamaño del título de la navbar */
+.navbar-brand {
+    font-size: 1rem;  /* Reducido de 1.2rem */
+  }
+  
+  /* Reducir más el tamaño de los títulos de tarjetas */
+  .card-title {
+    font-size: 0.95rem;  /* Reducido de 1.1rem */
+    font-weight: 500;
+  }
+  
+  /* Reducir más el tamaño de texto en etiquetas */
+  label {
+    font-size: 0.8rem;  /* Reducido de 0.9rem */
+    margin-bottom: 0.2rem;
+  }
+  
+  /* Reducir más el tamaño de texto en los campos de formulario */
+  .form-control, input, select, option {
+    font-size: 0.75rem;  /* Reducido de 0.85rem */
+    padding: 0.25rem 0.4rem;  /* Padding ligeramente reducido */
+    height: auto;  /* Esto ayuda a que los inputs sean más compactos */
+  }
+  
+  /* Ajustar más el tamaño de botones */
+  .btn {
+    font-size: 0.75rem;  /* Reducido de 0.85rem */
+    padding: 0.25rem 0.5rem;  /* Padding ligeramente reducido */
+    line-height: 1.2;  /* Ayuda a reducir la altura del botón */
+  }
+  
+  /* Reducir más el espaciado vertical entre grupos de formularios */
+  .form-group {
+    margin-bottom: 0.5rem;  /* Reducido de 0.75rem */
+  }
+  
+  /* Ajustar espaciado en elementos alineados horizontalmente */
+  .d-flex.align-items-center {
+    gap: 0.4rem;  /* Reducido de 0.5rem */
+  }
+  
+  /* Ajustar ancho de los inputs cuando sea necesario */
+  .w50 {
+    width: 50% !important;
+  }
+  
+  /* Reducir padding en card-body para hacer el formulario más compacto */
+  .card-body {
+    padding: 0.75rem;  /* Reducido del padding por defecto de Bootstrap */
+  }
+  
+  /* Hacer que los selects sean más compactos */
+  select.form-control {
+    height: calc(1.5em + 0.5rem + 2px);  /* Altura reducida para selects */
+  }

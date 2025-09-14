@@ -1,0 +1,53 @@
+[
+  {
+    "nombre": "LEY DE SEGURIDAD NACIONAL",
+    "delitos": [
+      {
+        "nombre": "ESPIONAJE",
+        "riesgos": [
+          { "nombre": "FUGA DE INFORMACIÓN" },
+          { "nombre": "COMPROMISO DE SISTEMAS CRÍTICOS" }
+        ]
+      },
+      {
+        "nombre": "SABOTAJE",
+        "riesgos": [
+          { "nombre": "DAÑOS A INFRAESTRUCTURA" },
+          { "nombre": "INTERRUPCIÓN DE SERVICIOS" }
+        ]
+      }
+    ]
+  },
+  {
+    "nombre": "LEY ANTICORRUPCIÓN",
+    "delitos": [
+      {
+        "nombre": "COHECHO",
+        "riesgos": [
+          { "nombre": "PERDIDA DE CONFIANZA CIUDADANA" },
+          { "nombre": "SANCIONES INTERNACIONALES" }
+        ]
+      },
+      {
+        "nombre": "MALVERSACIÓN DE FONDOS",
+        "riesgos": [
+          { "nombre": "DÉFICIT PRESUPUESTARIO" },
+          { "nombre": "PÉRDIDA DE PATRIMONIO PÚBLICO" }
+        ]
+      }
+    ]
+  },
+  {
+    "nombre": "LEY DE PROTECCIÓN AMBIENTAL",
+    "delitos": [
+      {
+        "nombre": "VERTIDO DE RESIDUOS TÓXICOS",
+        "riesgos": [
+          { "nombre": "CONTAMINACIÓN DE AGUAS" },
+          { "nombre": "AFECTACIÓN A LA SALUD PÚBLICA" }
+        ]
+      }
+    ]
+  }
+]
+

@@ -1,0 +1,34 @@
+[
+  {
+    "codigo": "DTE_ACEPTADO",
+    "descripcion": "El documento fue validado correctamente por el SII."
+  },
+  {
+    "codigo": "DTE_RECHAZADO",
+    "descripcion": "El documento fue rechazado por el SII debido a errores formales."
+  },
+  {
+    "codigo": "DTE_NO_RECIBIDO",
+    "descripcion": "El SII no tiene registro del envío del DTE."
+  },
+  {
+    "codigo": "DTE_EN_PROCESO",
+    "descripcion": "El DTE fue recibido por el SII y está en proceso de validación."
+  },
+  {
+    "codigo": "DTE_CON_REPAROS",
+    "descripcion": "El DTE fue aceptado con reparos; puede contener advertencias o inconsistencias."
+  },
+  {
+    "codigo": "ERROR_FIRMA",
+    "descripcion": "Firma digital inválida o no reconocida por el SII."
+  },
+  {
+    "codigo": "RECHAZADO_POR_ERROR_DE_SCHEMA",
+    "descripcion": "El documento tiene errores estructurales en el XML (schema inválido)."
+  },
+  {
+    "codigo": "DOCUMENTO_ANULADO",
+    "descripcion": "El documento fue anulado mediante una Nota de Crédito."
+  }
+]

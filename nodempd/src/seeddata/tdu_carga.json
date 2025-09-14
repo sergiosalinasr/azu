@@ -1,0 +1,80 @@
+[
+  {
+    "tdu": { "nombreCorto": "MODULO", "descripcionLarga": "tdu Tabla de módulos del sistema", "id_modulo": 1, "id_tipo": 2, "id_estado": 1, "cdu_expreg_nombrecorto": "Expresion regular cdu nombrecorto", "cdu_expreg_desclarga": "Expresion regular cdu desclarga" },
+    "cdus": [
+      { "id_tdu": 1, "nombreCorto": "DTE", "descripcionLarga": "cdu Facturación Electrónica" },
+      { "id_tdu": 1, "nombreCorto": "MPD", "descripcionLarga": "cdu Módulo de Prevención del Delito" },
+      { "id_tdu": 1, "nombreCorto": "LIQ", "descripcionLarga": "cdu Módulo de Liquidacion de Sueldos" }
+    ]
+  },
+  {
+    "tdu": { "nombreCorto": "TIPOTABLA", "descripcionLarga": "tdu Tipos de tablas reservadas o de usuario", "id_modulo": 1, "id_tipo": 2, "id_estado": 1, "cdu_expreg_nombrecorto": "Expresion regular cdu nombrecorto", "cdu_expreg_desclarga": "Expresion regular cdu desclarga" },
+    "cdus": [
+      { "id_tdu": 1, "nombreCorto": "RES", "descripcionLarga": "cdu Reservada para el sistema" },
+      { "id_tdu": 1, "nombreCorto": "CDU", "descripcionLarga": "cdu Definida por el Usuario" }
+    ]
+  },
+  {
+    "tdu": { "nombreCorto": "ESTADOTABLA", "descripcionLarga": "tdu Estado de la tabla", "id_modulo": 1, "id_tipo": 2, "id_estado": 1, "cdu_expreg_nombrecorto": "Expresion regular cdu nombrecorto", "cdu_expreg_desclarga": "Expresion regular cdu desclarga" },
+    "cdus": [
+      { "id_tdu": 1, "nombreCorto": "ACT", "descripcionLarga": "cdu Estado activo de la tabla" },
+      { "id_tdu": 1, "nombreCorto": "NOA", "descripcionLarga": "cdu Estado NO Activa de la tabla" }
+    ]
+  },
+  {
+    "tdu": { "nombreCorto": "PAIS2", "descripcionLarga": "TABLA2 DE PAISES", "id_modulo": 1, "id_tipo": 2, "id_estado": 1, "cdu_expreg_nombrecorto": "Expresion regular cdu nombrecorto", "cdu_expreg_desclarga": "Expresion regular cdu desclarga" },
+    "cdus": [
+      { "id_tdu": 1, "nombreCorto": "ARGENTINA2", "descripcionLarga": "PAIS ARGENTINA" },
+      { "id_tdu": 1, "nombreCorto": "CHILE2", "descripcionLarga": "PAIS CHILE" }
+    ]
+  },
+  {
+    "tdu": { "nombreCorto": "SANCION2", "descripcionLarga": "TABLA2 DE SANCIONES", "id_modulo": 1, "id_tipo": 2, "id_estado": 1, "cdu_expreg_nombrecorto": "Expresion regular cdu nombrecorto", "cdu_expreg_desclarga": "Expresion regular cdu desclarga" },
+    "cdus": [
+      { "id_tdu": 1, "nombreCorto": "MULTA 50 UTM", "descripcionLarga": "Multa de 1-50 UTM; indemnización de daños" },
+      { "id_tdu": 1, "nombreCorto": "MULTA RESP", "descripcionLarga": "Multa de 1-50 UTM; responsabilidad civil" },
+      { "id_tdu": 1, "nombreCorto": "MULTA ADMIN", "descripcionLarga": "Multa de 2-50 UTM; sanción administrativa" },
+      { "id_tdu": 1, "nombreCorto": "MULTA JUDICIAL", "descripcionLarga": "Multa de 2-50 UTM; recurso judicial" },
+      { "id_tdu": 1, "nombreCorto": "MULTA PENAL", "descripcionLarga": "Multa de 1-50 UTM; posible acción penal" },
+      { "id_tdu": 1, "nombreCorto": "INDEMNIZACION", "descripcionLarga": "Indemnización de daños patrimoniales y morales" },
+      { "id_tdu": 1, "nombreCorto": "MULTA INCUMPPLIMIENTO", "descripcionLarga": "Multa de 1-10 UTM por incumplimiento" }
+    ]
+  },
+  {
+    "tdu": { "nombreCorto": "NIVELGRAVEDAD2", "descripcionLarga": "TABLA DE NIVELES DE GRAVEDAD DEL DELITO", "id_modulo": 1, "id_tipo": 2, "id_estado": 1, "cdu_expreg_nombrecorto": "Expresion regular cdu nombrecorto", "cdu_expreg_desclarga": "Expresion regular cdu desclarga" },
+    "cdus": [
+      { "id_tdu": 1, "nombreCorto": "MUY ALTA2", "descripcionLarga": "Datos sensibles son más críticos para la privacidad; Datos médicos son especialmente críticos" },
+      { "id_tdu": 1, "nombreCorto": "ALTA2", "descripcionLarga": "Implica violación directa de derechos fundamentales; Implica obstaculizar derechos fundamentales; Implica consecuencias directas para los afectados" },
+      { "id_tdu": 1, "nombreCorto": "MEDIA2", "descripcionLarga": "Relacionada con prácticas comerciales indebidas; Puede estar relacionado con negligencia técnica" },
+      { "id_tdu": 1, "nombreCorto": "BAJA2", "descripcionLarga": "Generalmente es un problema técnico o administrativo; Relacionada con el cumplimiento normativo" }
+    ]
+  },
+  {
+    "tdu": { "nombreCorto": "PROBABILIDAD2", "descripcionLarga": "TABLA DE PROBABILIDAD DE OCURRENCIA DE UN RIESGO", "id_modulo": 1, "id_tipo": 2, "id_estado": 1, "cdu_expreg_nombrecorto": "Expresion regular cdu nombrecorto", "cdu_expreg_desclarga": "Expresion regular cdu desclarga" },
+    "cdus": [
+      { "id_tdu": 1, "nombreCorto": "ALTA2", "descripcionLarga": "ALTA" },
+      { "id_tdu": 1, "nombreCorto": "MODERADA2", "descripcionLarga": "MODERADA" },
+      { "id_tdu": 1, "nombreCorto": "BAJA2", "descripcionLarga": "BAJA" }
+    ]
+  },
+  {
+    "tdu": { "nombreCorto": "IMPACTO2", "descripcionLarga": "NIVEL DE IMPACTO DE UN RIESGO", "id_modulo": 1, "id_tipo": 2, "id_estado": 1, "cdu_expreg_nombrecorto": "Expresion regular cdu nombrecorto", "cdu_expreg_desclarga": "Expresion regular cdu desclarga" },
+    "cdus": [
+      { "id_tdu": 1, "nombreCorto": "MUY ALTO2", "descripcionLarga": "Puede generar consecuencias legales severas y daño irreversible al titular; Consecuencias legales, éticas y sociales severas" },
+      { "id_tdu": 1, "nombreCorto": "ALTO2", "descripcionLarga": "Afecta derechos fundamentales y expone a demandas legales; Puede escalar a problemas legales graves; Impacta directamente la sostenibilidad de la empresa" },
+      { "id_tdu": 1, "nombreCorto": "MEDIO2", "descripcionLarga": "Puede ser altamente dañino para empresas que dependen de la confianza; Afecta operaciones pero no siempre implica daño grave; Afecta la operación pero rara vez tiene impacto externo grave" },
+      { "id_tdu": 1, "nombreCorto": "BAJO2", "descripcionLarga": "Impacta principalmente en términos legales" }
+    ]
+  },
+  {
+    "tdu": { "nombreCorto": "MITIGACION2", "descripcionLarga": "TABLA DE MITIGACIONES DE UN RIESGO", "id_modulo": 1, "id_tipo": 2, "id_estado": 1, "cdu_expreg_nombrecorto": "Expresion regular cdu nombrecorto", "cdu_expreg_desclarga": "Expresion regular cdu desclarga" },
+    "cdus": [
+      { "id_tdu": 1, "nombreCorto": "MUY ALTO2", "descripcionLarga": "Puede generar consecuencias legales severas y daño irreversible al titular; Consecuencias legales, éticas y sociales severas" },
+      { "id_tdu": 1, "nombreCorto": "PROCESOS2", "descripcionLarga": "Establecer procesos claros de consentimiento informado; Procedimientos claros para ejercer derechos de los titulares; Seguimiento proactivo de cumplimiento regulatorio" },
+      { "id_tdu": 1, "nombreCorto": "AUTOMATIZACION2", "descripcionLarga": "Automatización de procesos y controles de calidad en los datos; Implementar reglas automáticas para eliminación de datos" },
+      { "id_tdu": 1, "nombreCorto": "SEGURIDAD2", "descripcionLarga": "Seguridad avanzada en sistemas médicos, doble autenticación; Seguros de responsabilidad civil, análisis de impacto en privacidad (PIA)" }
+    ]
+  }
+
+]
+  

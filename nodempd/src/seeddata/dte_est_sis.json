@@ -1,0 +1,11 @@
+[
+  { "codigo": "GENERADO", "descripcion": "DTE generado, sin firmar ni enviar" },
+  { "codigo": "FIRMADO", "descripcion": "DTE firmado digitalmente" },
+  { "codigo": "ENVIADO", "descripcion": "Enviado al SII, en espera de validación" },
+  { "codigo": "ACEPTADO", "descripcion": "Aceptado por el SII" },
+  { "codigo": "RECHAZADO", "descripcion": "Rechazado por el SII" },
+  { "codigo": "REPAROS", "descripcion": "Aceptado con reparos por el SII" },
+  { "codigo": "PENDIENTE", "descripcion": "Esperando resultado del SII" },
+  { "codigo": "NO_RECIBIDO", "descripcion": "El SII no ha recibido el DTE" },
+  { "codigo": "ANULADO", "descripcion": "DTE anulado con nota de crédito" }
+]

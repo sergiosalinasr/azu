@@ -1,0 +1,88 @@
+[
+  {
+    "nombre": "LEY1", 
+    "descripcion": "Descripcion LEY1", 
+    "fechapublicacion": "1999-08-28", 
+    "tdu_nom_pais": "PAIS", 
+    "cdu_nom_pais": "CHILE",
+    "delitos": [
+      {
+        "nombre": "DELITO1 LEY1", 
+        "descripcion": "Descripcion DELITO1 LEY1", 
+        "tdu_nom_sancion": "SANCION", 
+        "cdu_nom_sancion": "MULTA 50 UTM", 
+        "tdu_nom_nivelgravedad": "NIVELGRAVEDAD", 
+        "cdu_nom_nivelgravedad": "MUY ALTA",
+        "riesgos": [
+            { 
+                "nombre": "RIESGO1 DELITO1 LEY1",
+                "descripcion": "Descripción del riesgo 1", 
+                "tdu_nom_probabilidad": "PROBABILIDAD", 
+                "cdu_nom_probabilidad": "ALTA", 
+                "tdu_nom_impacto": "IMPACTO", 
+                "cdu_nom_impacto": "ALTO", 
+                "tdu_nom_mitigacion": "MITIGACION", 
+                "cdu_nom_mitigacion": "PROCESOS" 
+            },
+            {   "nombre": "RIESGO2 DELITO1 LEY1",
+                "descripcion": "Descripción del riesgo 1", 
+                "tdu_nom_probabilidad": "PROBABILIDAD", 
+                "cdu_nom_probabilidad": "ALTA", 
+                "tdu_nom_impacto": "IMPACTO", 
+                "cdu_nom_impacto": "ALTO", 
+                "tdu_nom_mitigacion": "MITIGACION", 
+                "cdu_nom_mitigacion": "PROCESOS" 
+            }
+        ]
+      },
+      {
+        "nombre": "DELITO2 LEY1", 
+        "descripcion": "Descripcion DELITO2 LEY1", 
+        "tdu_nom_sancion": "SANCION", 
+        "cdu_nom_sancion": "MULTA 50 UTM", 
+        "tdu_nom_nivelgravedad": "NIVELGRAVEDAD", 
+        "cdu_nom_nivelgravedad": "MUY ALTA",
+        "riesgos": [
+          { 
+            "nombre": "RIESGO1 DELITO2 LEY1",
+            "descripcion": "Descripción del riesgo 1", 
+            "tdu_nom_probabilidad": "PROBABILIDAD", 
+            "cdu_nom_probabilidad": "ALTA", 
+            "tdu_nom_impacto": "IMPACTO", 
+            "cdu_nom_impacto": "ALTO", 
+            "tdu_nom_mitigacion": "MITIGACION", 
+            "cdu_nom_mitigacion": "PROCESOS" }
+        ]
+      }
+    ]
+  },
+  {
+    "nombre": "LEY2", 
+    "descripcion": "Descripcion LEY2", 
+    "fechapublicacion": "1999-08-28", 
+    "tdu_nom_pais": "PAIS", 
+    "cdu_nom_pais": "CHILE",
+    "delitos": [
+      {
+        "nombre": "DELITO1 LEY2", 
+        "descripcion": "Descripcion DELITO1 LEY2", 
+        "tdu_nom_sancion": "SANCION", 
+        "cdu_nom_sancion": "MULTA 50 UTM", 
+        "tdu_nom_nivelgravedad": "NIVELGRAVEDAD", 
+        "cdu_nom_nivelgravedad": "MUY ALTA",
+        "riesgos": [
+            { 
+                "nombre": "RIESGO1 DELITO1 LEY2",
+                "descripcion": "Descripción del riesgo 1", 
+                "tdu_nom_probabilidad": "PROBABILIDAD", 
+                "cdu_nom_probabilidad": "ALTA", 
+                "tdu_nom_impacto": "IMPACTO", 
+                "cdu_nom_impacto": "ALTO", 
+                "tdu_nom_mitigacion": "MITIGACION", 
+                "cdu_nom_mitigacion": "PROCESOS"
+            }
+        ]
+      }
+    ]
+  }
+]

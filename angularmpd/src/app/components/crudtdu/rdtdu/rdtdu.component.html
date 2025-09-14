@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <h3>MAESTRO DE TDUS</h3><br>
+    <button type="button" class="btn btn-primary" (click)="nuevaTdu()">Nuevo Tdu</button>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">nombreCorto</th>
+                <th scope="col">descripcionLarga</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tdu of TduCamposArray">
+                <th scope="row">{{ tdu.id }}</th>
+                <td>{{ tdu.nombreCorto }}</td>
+                <td>{{ tdu.descripcionLarga }}</td>
+                <td>
+                    <button type="button" class="btn btn-danger me-1" (click)="deleteTdu(tdu.id); $event.stopPropagation()">D</button>
+                    <button type="button" class="btn btn-primary" (click)="editarTdu(tdu.id); $event.stopPropagation()">U</button>
+                    <button type="button" class="btn btn-primary" (click)="irCdu(tdu.id); $event.stopPropagation()">I</button>
+                </td>
+                
+            </tr>
+        </tbody>
+    </table>
+</div>

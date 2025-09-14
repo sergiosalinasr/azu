@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>mpd</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/yeti/bootstrap.min.css">
+
+
+</head>
+<body>
+  
+  <!-- Widget Configuration n8n-->
+  <script>
+      window.ChatWidgetConfig = {
+          webhook: {
+              url: 'http://localhost:5678/webhook/259f2614-70db-4bc8-b5df-583bb70a9708/chat',
+              route: 'general'
+          },
+          branding: {
+              logo: '<your company logo URL>',
+              name: 'nocodeveloper', // Your company name
+              welcomeText: 'Hola , como puedo ayudarte?', //Welcome message
+              responseTimeText: 'respondemos rapidamente' //Response time message
+          },
+          style: {
+              primaryColor: '#854fff', //Primary color
+              secondaryColor: '#6b3fd4', //Secondary color
+              position: 'right', //Position of the widget (left or right)
+              backgroundColor: '#ffffff', //Background color of the chat widget
+              fontColor: '#333333' //Text color for messages and interface
+          }
+      };
+  </script>
+  
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      console.log('DOM cargado. Configuración de ChatWidget:', window.ChatWidgetConfig);
+    });
+  </script>
+  <!-- Widget Script -->
+   <app-root></app-root>
+</body>
+</html>

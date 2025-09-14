@@ -1,0 +1,129 @@
+<a class="navbar-brand">
+    CRUD Tabla Delito
+</a>
+
+<div class="container  bg-light text-white p-3">
+    <div class="row">
+        <div class="col-md-12 mt-2">
+            <div class="card mt-4">
+                <div class="card-body">
+                    <div *ngIf="selectedDelito.id == 0; else editMode" class="card-title">
+                        AGREGANDO nuevo Delito
+                      </div>
+                      <ng-template #editMode>
+                        <div class="card-title">
+                          EDITANDO Delito
+                        </div>
+                      </ng-template>
+                      <div class="form-group">
+                        <input 
+                          type="text" 
+                          [(ngModel)]="selectedDelito.nombre" 
+                          (ngModelChange)="convertirAMayusculas($event)" 
+                          placeholder="Nombre Corto delito" 
+                          class="form-group w50"
+                        >
+                      </div>
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="selectedDelito.descripcion" placeholder="Descripción Delito" class="form-group w-75">
+                    </div>
+                    
+                    <div class="form-group d-flex align-items-center">
+                      <!-- Etiqueta de texto -->
+                      <label for="idley" class="me-2">Asociar el delito a una Ley:</label>
+                      
+                      <!-- Campo de texto no editable -->
+                      <input
+                        type="text"
+                        id="idley"
+                        [(ngModel)]="selectedDelito.idley"
+                        class="form-control me-2"
+                        readonly
+                        placeholder="Id tabla ref"
+                        style="width: 120px;"
+                      />
+                    
+                      <!-- Lista desplegable -->
+                      <select
+                        id="ley"
+                        [(ngModel)]="selectedDelito.idley"
+                        class="form-control"
+                        style="width: auto;"
+                      >
+                        <option *ngFor="let ley of leyArray" [value]="ley.id">
+                          {{ ley.nombre }}
+                        </option>
+                      </select>
+                    </div>
+                    
+                    
+                    <div class="form-group d-flex align-items-center">
+                      <!-- Etiqueta de texto -->
+                      <label for="sancion" class="me-2">Asociar la respectiva sanción:</label>
+                      
+                      <!-- Campo de texto no editable -->
+                      <input
+                        type="text"
+                        id="sancion"
+                        [(ngModel)]="selectedDelito.sancion"
+                        class="form-control me-2"
+                        readonly
+                        placeholder="Id tabla ref"
+                        style="width: 120px;"
+                      />
+                    
+                      <!-- Lista desplegable -->
+                      <select
+                        id="sancion-select"
+                        [(ngModel)]="selectedDelito.sancion"
+                        class="form-control"
+                        style="width: auto;"
+                      >
+                        <option *ngFor="let sancion of tduSancionArray" [value]="sancion.id">
+                          {{ sancion.nombreCorto }}
+                        </option>
+                      </select>
+                    </div>
+                    
+                    
+                    <div class="form-group d-flex align-items-center">
+                      <!-- Etiqueta de texto -->
+                      <label for="nivelgravedad" class="me-2">Seleccione un Nivel de Gravedad:</label>
+                      
+                      <!-- Campo de texto no editable -->
+                      <input
+                        type="text"
+                        id="nivelgravedad"
+                        [(ngModel)]="selectedDelito.nivelgravedad"
+                        class="form-control me-2"
+                        readonly
+                        placeholder="Id tabla ref"
+                        style="width: 120px;"
+                      />
+                    
+                      <!-- Lista desplegable -->
+                      <select
+                        id="nivelgravedad-select"
+                        [(ngModel)]="selectedDelito.nivelgravedad"
+                        class="form-control"
+                        style="width: auto;"
+                      >
+                        <option *ngFor="let nivelgravedad of tduNivelgravedadArray" [value]="nivelgravedad.id">
+                          {{ nivelgravedad.nombreCorto }}
+                        </option>
+                      </select>
+                    </div>
+                    
+                    
+                    <button   
+                        (click)="addOrEdit()"
+                        class="btn btn-primary">
+                        Submit
+                    </button>
+                    <button type="button" class="btn btn-primary" (click)="cancelar()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

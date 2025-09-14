@@ -1,0 +1,58 @@
+<a class="navbar-brand">
+    CRUD Tabla CDU 
+</a>
+
+<div class="container  bg-light text-white p-3">
+    <div class="row">
+        <div class="col-md-12 mt-2">
+            <ul class="list-group" style="max-height: 150px; overflow-y: auto;">
+                <li
+                   *ngFor="let tablacdu of tablacduArray"
+                   class="list-group-item list-group-item-action"
+                   (click)="openForEdit(tablacdu)"
+                   [class.bg-primary]="tablacdu == selectedTablacdu"
+                   [class.text-white]="tablacdu == selectedTablacdu"
+                >
+                  <span class="badge badge-primary">{{ tablacdu.id }}</span>
+                  {{ tablacdu.id_tdu }} - {{ tablacdu.nombreCorto }} - {{ tablacdu.descripcionLarga }}
+                </li>
+              </ul>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <div *ngIf="selectedTablacdu.id == 0; else editMode" class="card-title">
+                        Agregar nuevo registro
+                      </div>
+                      <ng-template #editMode>
+                        <div class="card-title">
+                          Editar registro existente
+                        </div>
+                      </ng-template>
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="selectedTablacdu.id_tdu" placeholder="Id tabla ref" class="form-group w50">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="selectedTablacdu.nombreCorto" placeholder="Nombre Corto" class="form-group w50">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="selectedTablacdu.descripcionLarga" placeholder="Descripción larga" class="form-group w-75">
+                    </div>
+                    <button
+                        
+                        (click)="addOrEdit()"
+                        class="btn btn-primary">
+                        Submit
+                    </button>
+                    <button
+                        *ngIf="selectedTablacdu.id !==0"
+                        class="btn btn-danger"
+                        (click)="delete()">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

@@ -1,0 +1,10 @@
+version: '3'
+services:
+  angularmpd:
+    image: i_angularmpd2 # Asegúrate de que esta imagen ya esté construida y disponible localmente o en un registro accesible
+    container_name: c_nginx-angmpd2
+    ports:
+      - 4200:80
+
+
+#  docker compose -f src/docker/docker-composeAng.yaml -p dc_mpd up -d

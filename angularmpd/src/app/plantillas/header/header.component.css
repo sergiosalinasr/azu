@@ -1,0 +1,12 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Mantén el header en la parte superior */
+}
+
+.sidebar {
+    margin-top: 56px; /* Mismo ajuste para alinear con el header */
+    height: calc(100vh - 56px);
+    background-color: rgb(255, 99, 71);
+}

@@ -1,0 +1,30 @@
+# Primer paso: construir la app
+FROM node:18-alpine as build-step
+
+RUN mkdir -p /app
+
+WORKDIR /app
+
+COPY angularmpd/package.json /app/
+
+RUN npm install
+COPY angularmpd/ /app
+
+# Listar contenido para depuración
+RUN ls -la /app
+
+# Construir la aplicación
+RUN npm install -g @angular/cli@17.0.7
+RUN npm run build -- --verbose
+
+# Segundo paso: usar Nginx para servir la app
+FROM nginx:1.17.1-alpine
+
+COPY --from=build-step /app/dist/angularmpd/browser /usr/share/nginx/html
+
+
+# Construir con:
+# el "--no-cache" se agrega para no usar la cache; esto es solo para depurar
+# ANTES del build, ejecutar en local para ver que no hay errores: npm run build -- --verbose
+# docker build --no-cache -t i_angularmpd2 -f angularmpd/src/docker/DockerfileBuildApp2 .
+# docker compose -f src/docker/docker-composeAng.yaml -p dc_mpd up -d

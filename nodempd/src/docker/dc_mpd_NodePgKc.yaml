@@ -1,0 +1,53 @@
+version: "3.8"
+
+services:
+  c_postgres:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - DATABASE_HOST=127.0.0.1
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=root
+
+  c_pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "sergio.salinasr@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+    ports:
+      - "85:80"
+    depends_on:
+      - c_postgres
+
+  nodeapp:
+    image: i_nodempd
+    container_name: c_nodempd
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - KEYCLOAK_URL=http://keycloak:8080
+      - POSTGRES_URL=postgresql://root:root@c_postgres:5432/root
+    depends_on:
+      - keycloak
+      - c_postgres
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:12.0.2
+    container_name: keycloak
+    ports:
+      - "8081:8080"
+      - "8443:8443"
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+    volumes:
+      - keycloak_data:/opt/jboss/keycloak/standalone/data
+      - keycloak_logs:/opt/jboss/keycloak/standalone/log
+
+volumes:
+  keycloak_data:
+  keycloak_logs:

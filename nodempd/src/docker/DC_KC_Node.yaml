@@ -1,0 +1,35 @@
+version: '3.8'  # Usa la versión 3.8 de la especificación de Docker Compose
+
+services:
+  nodeapp:
+    image: i_nodempd  # Usa la imagen que construiste anteriormente
+    container_name: c_nodempd
+    ports:
+      - "3000:3000"  # Mapea el puerto 3000 del contenedor al puerto 3000 del host
+    # volumes:
+    #   - ./nodempd:/app  # Monta la carpeta nodempd del host en /app dentro del contenedor, opcional si ya todo está en la imagen
+    environment:
+      - NODE_ENV=development  # Variables de entorno necesarias para tu aplicación
+      - KEYCLOAK_URL=http://keycloak:8080
+    depends_on:
+      - keycloak  # Si depende de Keycloak u otro servicio, asegúrate de definirlo también
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:12.0.2
+    container_name: keycloak
+    ports:
+      - "8081:8080"
+      - "8443:8443"
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+    volumes:
+      - keycloak_data:/opt/jboss/keycloak/standalone/data
+      - keycloak_logs:/opt/jboss/keycloak/standalone/log
+
+volumes:
+  keycloak_data:
+  keycloak_logs:
+
+
+#  docker compose -f src/docker/DC_KC_Node.yaml -p dc_mpd_b up -

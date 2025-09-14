@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <h3>MAESTRO DE RIESGOS</h3><br>
+    <button type="button" class="btn btn-primary" (click)="nuevaRiesgo()">Nuevo Riesgo</button>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Delito</th>
+                <th scope="col">Probabilidad</th>
+                <th scope="col">Impacto</th>
+                <th scope="col">Mitigacion</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let riesgo of RiesgoCamposArray">
+                <th scope="row">{{ riesgo.id }}</th>
+                <td>{{ riesgo.nombre }}</td>
+                <td>{{ riesgo.descripcion }}</td>
+                <!--
+                <td>{{ riesgo.idley }}</td>
+                -->
+                <td>{{ riesgo.descdelito }}</td>
+                <!--
+                <td>{{ riesgo.sancion }}</td>
+                -->
+                <td>{{ riesgo.descprobabilidad }}</td>
+                <!--
+                <td>{{ riesgo.nivelgravedad }}</td>
+                -->
+                <td>{{ riesgo.descimpacto }}</td>
+                <td>{{ riesgo.descmitigacion }}</td>
+                <td>
+                    <button type="button" class="btn btn-danger me-1" (click)="deleteRiesgo(riesgo.id); $event.stopPropagation()">D</button>
+                    <button type="button" class="btn btn-primary" (click)="editarRiesgo(riesgo.id); $event.stopPropagation()">U</button>
+                </td>
+                
+            </tr>
+        </tbody>
+    </table>
+</div>

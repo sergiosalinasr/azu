@@ -1,0 +1,28 @@
+<div class="wrapper">
+  <div id="formContent">
+    <!-- Títulos -->
+    <div class="fadeIn first">
+      <img src={{env_empresa_logo}} icon alt="User Icon" />
+      <p>{{ env_empresa }} - {{ version }}</p>
+    </div>
+
+    <!-- Formulario de Login -->
+    <form [formGroup]="loginForm" (ngSubmit)="onLoginCookie(loginForm.value)">
+      <input type="text" id="login" class="fadeIn second" placeholder="Ingrese su login" formControlName="usuario" />
+      <input type="password" id="password" class="fadeIn third" placeholder="password" formControlName="password" />
+      <input type="submit" class="fadeIn fourth" value="LogIn" />
+    </form>
+
+    <!--button type="button" class="btn btn-primary" (click)="nuevoUsuario(loginForm.value)">Nuevo Usuario</button-->
+
+    <!-- Mensaje de error -->
+    <div class="alert alert-danger" *ngIf="errorStatus">
+      <p>{{ errorMsj }}</p>
+    </div>
+
+    <!-- Mensaje de estado -->
+    <div *ngIf="message" [class]="messageType">
+      {{ message }}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+[
+  { "codigo": 33, "descripcion": "Factura Electrónica" },
+  { "codigo": 34, "descripcion": "Factura No Afecta o Exenta Electrónica" },
+  { "codigo": 39, "descripcion": "Boleta Electrónica" },
+  { "codigo": 41, "descripcion": "Boleta Exenta Electrónica" },
+  { "codigo": 52, "descripcion": "Guía de Despacho Electrónica" },
+  { "codigo": 56, "descripcion": "Nota de Débito Electrónica" },
+  { "codigo": 61, "descripcion": "Nota de Crédito Electrónica" },
+  { "codigo": 110, "descripcion": "Factura de Exportación Electrónica" },
+  { "codigo": 111, "descripcion": "Nota de Débito de Exportación Electrónica" },
+  { "codigo": 112, "descripcion": "Nota de Crédito de Exportación Electrónica" },
+  { "codigo": 801, "descripcion": "Orden de Compra Electrónica" },
+  { "codigo": 802, "descripcion": "Nota de Pedido Electrónica" },
+  { "codigo": 803, "descripcion": "Contrato Electrónico" },
+  { "codigo": 804, "descripcion": "Resolución Electrónica" },
+  { "codigo": 805, "descripcion": "Proceso de Recaudación Electrónica" },
+  { "codigo": 806, "descripcion": "Hoja de Ruta Electrónica" },
+  { "codigo": 807, "descripcion": "Comprobante de Entrega Electrónico" }
+]

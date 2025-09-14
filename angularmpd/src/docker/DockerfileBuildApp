@@ -1,0 +1,30 @@
+FROM node:18-alpine as build-step
+
+RUN mkdir -p /app
+
+WORKDIR /app
+
+COPY package.json /app/
+
+RUN npm install
+
+COPY . /app
+
+# Lista el contenido de /app para depuración
+RUN ls -la /app
+
+RUN npm run build --prod
+
+# Segundo paso
+
+FROM nginx:1.17.1-alpine
+
+# limpiar destino
+#RUN rm -rf /usr/share/nginx/html/*
+
+COPY --from=build-step /app/dist/angularclub/browser /usr/share/nginx/html
+
+# Construir con:
+# el "--no-cache" se agrega para no usar la cache; esto es solo para depurar
+# docker build --no-cache -t angularclub -f src/docker/DockerfileBuildApp .
+# docker run -d -it -p 4300:80 angularclub

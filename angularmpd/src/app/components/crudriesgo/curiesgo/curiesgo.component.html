@@ -1,0 +1,158 @@
+<a class="navbar-brand">
+    Maestro de Riesgo
+</a>
+
+<div class="container  bg-light text-white p-3">
+    <div class="row">
+        <div class="col-md-12 mt-2">
+            <div class="card mt-4">
+                <div class="card-body">
+                    <div *ngIf="selectedRiesgo.id == 0; else editMode" class="card-title">
+                        AGREGANDO nuevo Riesgo
+                      </div>
+                      <ng-template #editMode>
+                        <div class="card-title">
+                          Editar Riesgo
+                        </div>
+                      </ng-template>
+                      <div class="form-group">
+                        <input 
+                          type="text" 
+                          [(ngModel)]="selectedRiesgo.nombre" 
+                          (ngModelChange)="convertirAMayusculas($event)" 
+                          placeholder="Nombre Delito" 
+                          class="form-group w50"
+                        >
+                      </div>
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="selectedRiesgo.descripcion" placeholder="Descripción Riesgo" class="form-group w-75">
+                    </div>
+                    
+                    <div class="form-group d-flex align-items-center">
+                      <!-- Etiqueta de texto -->
+                      <label for="iddelito" class="me-2">Asociar este Riesgo a un Delito:</label>
+                    
+                      <!-- Campo de texto no editable -->
+                      <input
+                        type="text"
+                        id="iddelito"
+                        [(ngModel)]="selectedRiesgo.iddelito"
+                        class="form-control me-2"
+                        readonly
+                        placeholder="Id tabla ref"
+                        style="width: 120px;"
+                      />
+                    
+                      <!-- Lista desplegable -->
+                      <select
+                        id="iddelito-select"
+                        [(ngModel)]="selectedRiesgo.iddelito"
+                        class="form-control"
+                        style="width: auto;"
+                      >
+                        <option *ngFor="let delito of delitoArray" [value]="delito.id">
+                          {{ delito.nombre }}
+                        </option>
+                      </select>
+                    </div>
+                    
+                    
+                    <div class="form-group d-flex align-items-center">
+                      <!-- Etiqueta de texto -->
+                      <label for="probabilidad" class="me-2">Seleccione una probabilidad:</label>
+                    
+                      <!-- Campo de texto no editable -->
+                      <input
+                        type="text"
+                        id="probabilidad"
+                        [(ngModel)]="selectedRiesgo.probabilidad"
+                        class="form-control me-2"
+                        readonly
+                        placeholder="Id tabla ref"
+                        style="width: 120px;"
+                      />
+                    
+                      <!-- Lista desplegable -->
+                      <select
+                        id="probabilidad-select"
+                        [(ngModel)]="selectedRiesgo.probabilidad"
+                        class="form-control"
+                        style="width: auto;"
+                      >
+                        <option *ngFor="let probabilidad of tduProbabilidadArray" [value]="probabilidad.id">
+                          {{ probabilidad.nombreCorto }}
+                        </option>
+                      </select>
+                    </div>
+                    
+                    
+                    <div class="form-group d-flex align-items-center">
+                      <!-- Etiqueta de texto -->
+                      <label for="impacto" class="me-2">Seleccione un Impacto:</label>
+                    
+                      <!-- Campo de texto no editable -->
+                      <input
+                        type="text"
+                        id="impacto"
+                        [(ngModel)]="selectedRiesgo.impacto"
+                        class="form-control me-2"
+                        readonly
+                        placeholder="Id tabla ref"
+                        style="width: 120px;"
+                      />
+                    
+                      <!-- Lista desplegable -->
+                      <select
+                        id="impacto-select"
+                        [(ngModel)]="selectedRiesgo.impacto"
+                        class="form-control"
+                        style="width: auto;"
+                      >
+                        <option *ngFor="let impacto of tduImpactoArray" [value]="impacto.id">
+                          {{ impacto.nombreCorto }}
+                        </option>
+                      </select>
+                    </div>
+                    
+
+                    <div class="form-group d-flex align-items-center">
+                      <!-- Etiqueta de texto -->
+                      <label for="mitigacion" class="me-2">Seleccione una Mitigación:</label>
+                    
+                      <!-- Campo de texto no editable -->
+                      <input
+                        type="text"
+                        id="mitigacion"
+                        [(ngModel)]="selectedRiesgo.mitigacion"
+                        class="form-control me-2"
+                        readonly
+                        placeholder="Id tabla ref"
+                        style="width: 120px;"
+                      />
+                    
+                      <!-- Lista desplegable -->
+                      <select
+                        id="mitigacion-select"
+                        [(ngModel)]="selectedRiesgo.mitigacion"
+                        class="form-control"
+                        style="width: auto;"
+                      >
+                        <option *ngFor="let mitigacion of tduMitigacionArray" [value]="mitigacion.id">
+                          {{ mitigacion.nombreCorto }}
+                        </option>
+                      </select>
+                    </div>
+                    
+                    
+                    <button   
+                        (click)="addOrEdit()"
+                        class="btn btn-primary">
+                        Submit
+                    </button>
+                    <button type="button" class="btn btn-primary" (click)="cancelar()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

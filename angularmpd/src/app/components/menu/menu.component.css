@@ -1,0 +1,22 @@
+/* src/app/components/menu/menu.component.css */
+ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    padding: 8px;
+    margin: 2px;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+  }
+  
+  li a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  li ul {
+    margin-left: 20px;
+  }
+  

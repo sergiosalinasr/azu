@@ -1,0 +1,14 @@
+.container-fluid {
+  display: flex;
+  min-height: 100vh; /* Esto asegura que la altura ocupe toda la ventana */
+}
+
+.sidebar {
+  height: 100vh; /* Ocupa toda la altura de la ventana para el menú lateral */
+}
+
+.content {
+  background-color: #f8f9fa; /* Un color de fondo para distinguir el área de trabajo */
+}
+
+

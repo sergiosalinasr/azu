@@ -1,0 +1,30 @@
+version: '3'
+services:
+  keycloack:
+    image: quay.io/keycloak/keycloak:12.0.2
+    container_name: keycloak
+    ports:
+      - 8081:8080
+      - 8443:8443
+    restart: unless-stopped
+    environment:
+      KEYCLOAK_USER: "admin"
+      KEYCLOAK_PASSWORD: "admin"
+    volumes:
+      - keycloak_data:/opt/jboss/keycloak/standalone/data
+      - keycloak_logs:/opt/jboss/keycloak/standalone/log
+
+  angularclub:
+    image: angularclub # Asegúrate de que esta imagen ya esté construida y disponible localmente o en un registro accesible
+    container_name: nginx-angular
+    ports:
+      - 4200:80
+    depends_on:
+      - keycloack
+
+volumes:
+  keycloak_data:
+  keycloak_logs:
+
+
+#  docker compose -f src/docker/docker-composeApp.yaml up -d

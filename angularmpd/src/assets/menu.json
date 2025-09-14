@@ -1,0 +1,62 @@
+[
+  {
+    "id": 3,
+    "title": "UDC",
+    "roles": ["admin"],
+    "submenu": [
+      { "title": "Admin Tasks", "route": "/menulateral/admintasks", "roles": ["admin"] },
+      { "title": "CRUD TDU", "route": "/menulateral/rdtdu", "roles": ["admin"] },
+      { "title": "CRUD CDU", "route": "/menulateral/rdcdu/0", "roles": ["admin"] }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Maestros",
+    "roles": ["admin", "user"],
+    "submenu": [
+      { "title": "Leyes", "route": "/menulateral/cdley", "roles": ["admin", "user"] },
+      { "title": "Delitos", "route": "/menulateral/rddelito/0", "roles": ["admin"] },
+      { "title": "Riesgos", "route": "/menulateral/rdriesgo/0", "roles": ["admin"] }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Demos",
+    "roles": ["admin", "user"],
+    "submenu": [
+      { "title": "IA Mutualx", "route": "/menulateral/n8nchat/Mutual", "roles": ["admin"] },
+      { "title": "IA Mutual", "route": "/menulateral/n8nmut/Mutual", "roles": ["admin", "user"] },
+      { "title": "IA USS", "route": "/menulateral/n8nuss/USS", "roles": ["admin", "user"] },
+      { "title": "IA Sodimac", "route": "/menulateral/n8nchat/Sodimac", "roles": ["admin", "user"] },
+      { "title": "IA Fosfoquim", "route": "/menulateral/n8nchat/Fosfoquim", "roles": ["admin", "user"] }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "menu",
+    "route": "/menu",
+    "roles": ["admin"],
+    "submenu": null
+  },
+  {
+    "id": 7,
+    "title": "RAG",
+    "externalUrl": "http://localhost:5678/webhook/259f2614-70db-4bc8-b5df-583bb70a9708/chat",
+    "roles": ["admin"],
+    "submenu": null
+  },
+  {
+    "id": 8,
+    "title": "n8nwidget2",
+    "route": "/n8nwidget2",
+    "roles": ["admin"],
+    "submenu": null
+  },
+  {
+    "id": 6,
+    "title": "Logout",
+    "route": null,
+    "roles": [],
+    "submenu": null
+  }
+]

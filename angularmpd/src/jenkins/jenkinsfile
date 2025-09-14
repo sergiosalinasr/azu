@@ -1,0 +1,66 @@
+
+pipeline {
+  agent { label 'master' }
+ parameters {
+        string(name: 'name_container', defaultValue: 'cangularclub-qa', description: 'nombre del docker')
+        string(name: 'name_imagen', defaultValue: 'iclubangular-qa', description: 'nombre de la imagen')
+        string(name: 'tag_imagen', defaultValue: 'latest', description: 'etiqueta de la imagen')
+        string(name: 'puerto_imagen', defaultValue: '4200', description: 'puerto a publicar')
+    }
+    environment {
+        name_final = "C${name_container}T${tag_imagen}P${puerto_imagen}"        
+    }
+    stages {
+          stage('stop/rm') {
+
+            when {
+                expression { 
+                    stdout = bat(returnStdout:true , script: "docker ps -q --filter name=%name_final%").trim()
+                    DOCKER_EXIST = stdout.readLines().drop(1).join(" ")
+                    return  DOCKER_EXIST != '' 
+                }
+            }
+            steps {
+                script{
+                    bat '''
+                        echo "docker stop %name_container%"
+                        docker stop %name_container%
+                    '''
+                    }
+                    
+                }                    
+                                  
+            }
+           
+        stage('build') {
+            steps {
+                script{
+                    bat ''' 
+                    rem docker build . -t %name_imagen%:%tag_imagen%
+                    cd angularclub
+                    docker build -f src/docker/DockerfileBuildApp . -t %name_imagen%:%tag_imagen%
+                    '''
+                    }
+                    
+                }                    
+                                  
+            }
+            stage('run') {
+            steps {
+                script{
+                    bat ''' 
+                        rem docker run -dp ${puerto_imagen}:80 --name ${name_final} ${name_imagen}:${tag_imagen}
+                        rem docker run -dp %puerto_imagen%:80 --name %name_final% %name_imagen%:%tag_imagen%
+                        cd angularclub
+                        docker compose -f src/docker/docker-composeApp.yaml up -d
+ 
+                    '''
+                    }
+                    
+                }                    
+                                  
+            }
+            
+          
+        }   
+    }

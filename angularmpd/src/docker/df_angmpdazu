@@ -1,0 +1,44 @@
+# Etapa 1: Build de Angular
+FROM node:18 AS build
+
+WORKDIR /app
+
+# Copiar package.json e instalar dependencias
+COPY angularmpd/package*.json ./
+RUN npm install --legacy-peer-deps
+
+# Copiar el resto del código y compilar
+COPY angularmpd/ ./
+RUN npm run build --omit=dev
+
+# Verificar contenido de build
+RUN ls -la /app/dist && ls -la /app/dist/angularmpd
+
+# Etapa 2: Servir con Nginx
+FROM nginx:stable-alpine
+
+# Eliminar configuración default
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copiar build Angular
+COPY --from=build /app/dist/angularmpd/browser  /usr/share/nginx/html
+
+# Copiar un nginx.conf custom si lo necesitas
+# COPY angularmpd/src/docker/nginx.conf /etc/nginx/conf.d/default.conf
+
+# Verificación
+RUN ls -la /usr/share/nginx/html
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+
+
+
+# Construir con:
+# el "--no-cache" se agrega para no usar la cache; esto es solo para depurar
+# ANTES del build, ejecutar en local para ver que no hay errores: npm run build -- --verbose
+# version para subir a docker hub
+# docker build --no-cache -t ssalinasr/i_angmpdazu:0.9.4 -f angularmpd/src/docker/df_angmpdazu .
+# version para local:
+# docker build --no-cache -t i_angmpdazu -f angularmpd/src/docker/df_angmpdazu .
+# docker compose -f src/docker/docker-composeAng.yaml -p dc_mpd up -d
