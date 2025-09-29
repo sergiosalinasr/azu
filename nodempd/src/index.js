@@ -17,6 +17,7 @@ const leyRoutes = require("./api/routes/leyRoutes");
 const delitoRoutes = require("./api/routes/delitoRoutes");
 const riesgoRoutes = require("./api/routes/riesgoRoutes");
 const n8nRoutes = require('./api/routes/n8nRoutes');
+const envRoutes = require('./api/routes/envRoutes');
 const cookieParser = require('cookie-parser');
 const SECRET_KEY = 'mi_clave_secreta_super_segura_123!';
 const { iniciarCargas, seedTDUCDU, convertirMonedaAPI, calcularTotalAPagarCLP, calcularTotalAPagarMonedaOrigen } = require('./services/rutinasService');
@@ -73,6 +74,7 @@ app.use('/ley', leyRoutes);
 app.use('/delito', delitoRoutes);
 app.use('/riesgo', riesgoRoutes);
 app.use('/n8n', n8nRoutes);
+app.use('/config', envRoutes);
 
 // por ahora, sólo un Healthy!
 app.get('/', (req, res) => {

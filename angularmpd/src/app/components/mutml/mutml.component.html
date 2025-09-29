@@ -1,0 +1,29 @@
+<div class="contenedor">
+  <h3>Clasificador de Reporte como "Normal"</h3>
+
+  <textarea [(ngModel)]="inputText" placeholder="Escriba el reporte..."></textarea>
+
+  <button (click)="enviar()" [disabled]="loading || !inputText.trim()">
+    {{ loading ? 'Enviando...' : 'Enviar' }}
+  </button>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div *ngIf="prediction !== null" class="resultado">
+    <div
+      class="caja"
+      [ngClass]="{ verde: prediction === 1, rojo: prediction === 0 }"
+    >
+      {{ prediction === 1 ? 'Positivo' : 'Negativo' }}
+    </div>
+
+    <div class="termometro">
+      <div
+        class="barra"
+        [style.height.%]="probability! * 100"
+        [title]="probability | number: '1.2-2'"
+      ></div>
+    </div>
+    <p>Probabilidad: {{ probability | number: '1.2-2' }}</p>
+  </div>
+</div>

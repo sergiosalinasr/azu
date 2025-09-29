@@ -1,0 +1,33 @@
+version: '3.8'
+
+networks:
+  red_mpd:
+    external: true   # usar la red creada en el compose base
+
+services:
+
+  s_nodeapp:
+    image: ssalinasr/i_nodempdazu:0.9.10 # Imagen de tu aplicación Node.js
+    container_name: c_nodempd
+    build:
+      context: .
+      dockerfile: src/docker/Dockerfile # Ruta al Dockerfile de tu aplicación
+    ports:
+      - "3000:3000"
+    environment:
+      DB_USER: root
+      DB_HOST: s_pgsqlmpd # Nombre del servicio de PostgreSQL
+      DB_PASSWORD: root
+      DB_NAME: root
+      DB_SCHEMA: mpd
+      DB_PORT: 5432
+      KEYCLOAK_URL: http://s_keycloakmpd:8080 # Nombre del servicio de Keycloak
+      KEYCLOAK_AUTH: http://s_keycloakmpd:8080/auth
+    networks:
+      - red_mpd
+
+
+
+# docker compose --env-file .env -f docker/dc_nodempdazu.yaml -p dc_nodempdazu up -d
+# EN LA CREACIÓN DEL SERVER EN PGADMIN, LA PRIMERA VEZ
+# considerar el nombre del host como (contenedor) en este caso: c_pgsqlmpd

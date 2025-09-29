@@ -50,6 +50,14 @@ export class LoginComponent {
   errorMsj:any = "";
 
   ngOnInit(): void{
+
+    // codigo de prueba
+    //console.log("Runtime config:", this.config.get('appVersion'));
+    //fetch('/assets/env.json')
+    //.then(r => r.json())
+    //.then(j => console.log("env.json directo:", j));
+    // fin codigo de prueba
+
     console.log("login-ngOnInit");
     this.checkLocalStorage();
     this.alertas.currentMessage.subscribe(msg => this.message = msg);

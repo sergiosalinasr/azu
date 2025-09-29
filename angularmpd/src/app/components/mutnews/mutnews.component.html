@@ -1,0 +1,31 @@
+<div class="contenedor">
+  <h3>Clasificador de Noticias</h3>
+
+  <textarea [(ngModel)]="inputText" placeholder="Escriba la noticia..."></textarea>
+
+  <button (click)="enviar()" [disabled]="loading || !inputText.trim()">
+    {{ loading ? 'Enviando...' : 'Enviar' }}
+  </button>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div *ngIf="prediction !== null" class="resultado">
+    <div class="caja">
+      Predicción principal: <strong>{{ prediction }}</strong>
+    </div>
+
+    <div class="probabilidades">
+      <div *ngFor="let key of (probabilities | keyvalue)" class="prob-item">
+        <label>{{ key.key }}</label>
+        <div class="termometro">
+          <div
+            class="barra"
+            [style.height.%]="key.value * 100"
+            [title]="key.value | number: '1.2-2'"
+          ></div>
+        </div>
+        <span>{{ key.value | number: '1.2-2' }}</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+version: '3.8'
+
+networks:
+  red_mpd:
+    external: true   # usar la red creada en el compose base
+
+services:
+  s_angularmpd:
+    image: ssalinasr/i_angmpdazu # Asegúrate de que esta imagen ya esté construida y disponible localmente o en un registro accesible
+    container_name: c_nginx-angmpd2
+    ports:
+      - "4200:80"
+    environment:
+      production: ${production}
+      appVersion: ${appVersion}
+      env_version: ${env_version}
+      env_empresa_logo: ${env_empresa_logo}
+      env_empresa_url: ${env_empresa_url}
+      env_nombre_sistema: ${env_nombre_sistema}
+      env_empresa: ${env_empresa}
+      env_url_backend: ${env_url_backend}
+      env_tdu_pais: ${env_tdu_pais}
+      env_tdu_sancion: ${env_tdu_sancion}
+      env_tdu_nivelgravedad: ${env_tdu_nivelgravedad}
+      env_tdu_probabilidad: ${env_tdu_probabilidad}
+      env_tdu_impacto: ${env_tdu_impacto}
+      env_tdu_mitigacion: ${env_tdu_mitigacion}
+    networks:
+      - red_mpd
+
+
+# docker compose --env-file .env -f docker/dc_angumpdazu.yaml -p dc_angumpdazu up -d
+# EN LA CREACIÓN DEL SERVER EN PGADMIN, LA PRIMERA VEZ
+# considerar el nombre del host como (contenedor) en este caso: c_pgsqlmpd

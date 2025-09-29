@@ -23,6 +23,8 @@ import { N8nwidget2Component } from './components/n8nwidget2/n8nwidget2.componen
 import { N8nchatComponent } from './components/n8nchat/n8nchat.component';
 import { N8nmutComponent } from './components/n8nmut/n8nmut.component';
 import { N8nussComponent } from './components/n8nuss/n8nuss.component';
+import { MutmlComponent } from './components/mutml/mutml.component';
+import { MutnewsComponent } from './components/mutnews/mutnews.component';
 
 const routes: Routes = [
   { path:'', redirectTo:'login', pathMatch:'full'},
@@ -41,6 +43,8 @@ const routes: Routes = [
       { path: 'n8nchat/:id_cliente', component:N8nchatComponent},
       { path: 'n8nmut/:id_cliente', component:N8nmutComponent},
       { path: 'n8nuss/:id_cliente', component:N8nussComponent},
+      { path: 'mutml', component:MutmlComponent},
+      { path: 'mutnews', component:MutnewsComponent},
       { path: 'culey/:id', component:CuleyComponent},
       { path: 'rddelito/:id', component:RddelitoComponent},
       { path: 'cudelito/:id/:id_ley', component:CudelitoComponent},
@@ -80,5 +84,7 @@ export const routingComponents = [
   N8nwidget2Component,
   N8nchatComponent,
   N8nmutComponent,
-  N8nussComponent
+  N8nussComponent,
+  MutmlComponent,
+  MutnewsComponent
 ]

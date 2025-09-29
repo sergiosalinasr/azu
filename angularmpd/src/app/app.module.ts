@@ -17,6 +17,8 @@ import { N8nchatComponent } from './components/n8nchat/n8nchat.component';
 import { RuntimeConfigService } from '../app/services/runtime-config.service';
 
 
+
+
 export function initializeApp(config: RuntimeConfigService) {
   return () => config.loadConfig();
 }

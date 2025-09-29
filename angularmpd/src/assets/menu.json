@@ -25,10 +25,12 @@
     "roles": ["admin", "user"],
     "submenu": [
       { "title": "IA Mutualx", "route": "/menulateral/n8nchat/Mutual", "roles": ["admin"] },
-      { "title": "IA Mutual", "route": "/menulateral/n8nmut/Mutual", "roles": ["admin", "user"] },
-      { "title": "IA USS", "route": "/menulateral/n8nuss/USS", "roles": ["admin", "user"] },
-      { "title": "IA Sodimac", "route": "/menulateral/n8nchat/Sodimac", "roles": ["admin", "user"] },
-      { "title": "IA Fosfoquim", "route": "/menulateral/n8nchat/Fosfoquim", "roles": ["admin", "user"] }
+      { "title": "Mutual IA", "route": "/menulateral/n8nmut/Mutual", "roles": ["admin", "user"] },
+      { "title": "Mutual - Predicción", "route": "/menulateral/mutml", "roles": ["admin", "user"] },
+      { "title": "Mutual - News", "route": "/menulateral/mutnews", "roles": ["admin", "user"] },
+      { "title": "IA USS", "route": "/menulateral/n8nuss/USS", "roles": ["admin"] },
+      { "title": "IA Sodimac", "route": "/menulateral/n8nchat/Sodimac", "roles": ["admin"] },
+      { "title": "IA Fosfoquim", "route": "/menulateral/n8nchat/Fosfoquim", "roles": ["admin"] }
     ]
   },
   {

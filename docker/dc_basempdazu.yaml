@@ -1,5 +1,9 @@
 version: '3.8'
 
+networks:
+  red_mpd:   # red interna compartida
+    name: red_mpd
+
 services:
 
   s_pgsqlmpd:
@@ -14,6 +18,8 @@ services:
       POSTGRES_DB: root
     volumes:
       - ${VOLUME_PGSQL}:/var/lib/postgresql/data # Persistencia de datos
+    networks:
+      - red_mpd
 
   s_pgadmin:
     image: dpage/pgadmin4
@@ -22,11 +28,13 @@ services:
       PGADMIN_DEFAULT_EMAIL: "sergio.salinasr@gmail.com"
       PGADMIN_DEFAULT_PASSWORD: "admin"
     ports:
-      - "85:80"
+      - "86:80"
     volumes:
       - ${VOLUME_PGADMIN}:/var/lib/pgadmin
     depends_on:
       - s_pgsqlmpd
+    networks:
+      - red_mpd
 
   s_keycloakmpd:
     image: quay.io/keycloak/keycloak:12.0.2
@@ -40,6 +48,8 @@ services:
     volumes:
       - ${VOLUME_KEYCLOAK_DATA}:/opt/jboss/keycloak/standalone/data
       - ${VOLUME_KEYCLOAK_LOGS}:/opt/jboss/keycloak/standalone/log
+    networks:
+      - red_mpd
 
 
 # docker compose --env-file .env -f docker/dc_basempdazu.yaml -p dc_basempdazu up -d

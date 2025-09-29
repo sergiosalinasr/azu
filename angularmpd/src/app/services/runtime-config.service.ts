@@ -6,7 +6,7 @@ export class RuntimeConfigService {
   private config: any;
 
   loadConfig(): Promise<void> {
-    return fetch('/assets/env.json')
+    return fetch('/assets/env.json')   // 👈 ahora apunta al endpoint del backend
       .then(response => response.json())
       .then(config => { this.config = config; });
   }
