@@ -8,7 +8,8 @@ import { environment } from '../../environments/environment';
 })
 export class MutnewsService {
   //url_n8n: string = environment.env_url_n8n;
-  url_mutnews: string = "http://localhost:8000";
+  //url_mutnews: string = "http://localhost:8000";
+  url_mutnews: string = "http://localhost:3000";
   url_cli: string = "";
 
   constructor(private http:HttpClient) { }
@@ -16,7 +17,8 @@ export class MutnewsService {
   postmutnews(form:any):Observable<any>{
     console.log("En postmutnews - form.chatInput: " + form.chatInput );
 
-    this.url_cli = "/news_logreg";
+    //this.url_cli = "/news_logreg";
+    this.url_cli = "/mutml/mod02";
     
     const url = this.url_mutnews + this.url_cli;
 
