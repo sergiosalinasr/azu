@@ -8,7 +8,8 @@ import { environment } from '../../environments/environment';
 })
 export class MutmlService {
   //url_n8n: string = environment.env_url_n8n;
-  url_mutml: string = "http://localhost:8000";
+  //url_mutml: string = "http://localhost:8000";
+  url_mutml: string = "http://localhost:3000";
   url_cli: string = "";
 
   constructor(private http:HttpClient) { }
@@ -16,7 +17,8 @@ export class MutmlService {
   postmutml(form:any):Observable<any>{
     console.log("En postmutml - form.chatInput: " + form.chatInput );
 
-    this.url_cli = "/logreg2_1";
+    //this.url_cli = "/logreg2_1";
+    this.url_cli = "/mutml/mod01";
     
     const url = this.url_mutml + this.url_cli;
 
