@@ -7,7 +7,7 @@ networks:
 services:
 
   s_nodeapp:
-    image: ssalinasr/i_nodempdazu:0.9.10 # Imagen de tu aplicación Node.js
+    image: ssalinasr/i_nodempdazu:0.9.12 # Imagen de tu aplicación Node.js
     container_name: c_nodempd
     build:
       context: .
@@ -23,6 +23,7 @@ services:
       DB_PORT: 5432
       KEYCLOAK_URL: http://s_keycloakmpd:8080 # Nombre del servicio de Keycloak
       KEYCLOAK_AUTH: http://s_keycloakmpd:8080/auth
+      URL_MLSERVING: ${URL_MLSERVING}
     networks:
       - red_mpd
 

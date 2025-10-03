@@ -6,7 +6,7 @@ networks:
 
 services:
   s_angularmpd:
-    image: ssalinasr/i_angmpdazu # Asegúrate de que esta imagen ya esté construida y disponible localmente o en un registro accesible
+    image: ssalinasr/i_angmpdazu:0.9.10 # Asegúrate de que esta imagen ya esté construida y disponible localmente o en un registro accesible
     container_name: c_nginx-angmpd2
     ports:
       - "4200:80"
