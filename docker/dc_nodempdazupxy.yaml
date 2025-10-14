@@ -1,0 +1,33 @@
+networks:
+  proxy_net:
+    external: true
+  red_mpd:
+    external: true
+
+services:
+  s_nodeapp:
+    image: ssalinasr/i_nodempdazu:0.9.12
+    container_name: c_nodempd
+    restart: unless-stopped
+    environment:
+      DB_USER: root
+      DB_HOST: s_pgsqlmpd
+      DB_PASSWORD: root
+      DB_NAME: root
+      DB_SCHEMA: mpd
+      DB_PORT: 5432
+      KEYCLOAK_URL: http://s_keycloakmpd:8080
+      KEYCLOAK_AUTH: http://s_keycloakmpd:8080/auth
+      CORS_ORIGINS: ${CORS_ORIGINS}
+      # 👇 Variables para proxy y SSL
+      VIRTUAL_HOST: api.azudem.sersalret.com
+      VIRTUAL_PORT: 3000
+      LETSENCRYPT_HOST: api.azudem.sersalret.com
+      LETSENCRYPT_EMAIL: sergio.salinasr@gmail.com
+
+    expose:
+      - "3000"
+
+    networks:
+      - proxy_net
+      - red_mpd

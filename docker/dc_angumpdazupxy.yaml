@@ -1,0 +1,48 @@
+version: '3.8'
+
+networks:
+  proxy_net:
+    external: true   # usa la red del proxy global (n8n_net o como la llames en ese compose)
+  red_mpd:
+    external: true   # tu red interna (si la necesitas para comunicarte con Node.js)
+
+services:
+  s_angularmpd:
+    image: ssalinasr/i_angmpdazu:0.9.11
+    container_name: c_angmpdazu
+    restart: unless-stopped
+    environment:
+      production: ${production}
+      appVersion: ${appVersion}
+      env_version: ${env_version}
+      env_empresa_logo: ${env_empresa_logo}
+      env_empresa_url: ${env_empresa_url}
+      env_nombre_sistema: ${env_nombre_sistema}
+      env_empresa: ${env_empresa}
+      env_url_backend: ${env_url_backend}
+      env_tdu_pais: ${env_tdu_pais}
+      env_tdu_sancion: ${env_tdu_sancion}
+      env_tdu_nivelgravedad: ${env_tdu_nivelgravedad}
+      env_tdu_probabilidad: ${env_tdu_probabilidad}
+      env_tdu_impacto: ${env_tdu_impacto}
+      env_tdu_mitigacion: ${env_tdu_mitigacion}
+
+      # 👇 Añade estas líneas para integrarlo al proxy global con SSL automático
+      VIRTUAL_HOST: azudem.sersalret.com
+      VIRTUAL_PORT: 80
+      LETSENCRYPT_HOST: azudem.sersalret.com
+      LETSENCRYPT_EMAIL: sergio.salinasr@gmail.com
+
+    # 👇 El proxy se encarga del tráfico, así que no es necesario mapear puertos
+    expose:
+      - "80"
+
+    networks:
+      - proxy_net
+      - red_mpd
+
+
+
+# docker compose --env-file .env -f docker/dc_angumpdazupxy.yaml -p dc_angumpdazupxy up -d
+# EN LA CREACIÓN DEL SERVER EN PGADMIN, LA PRIMERA VEZ
+# considerar el nombre del host como (contenedor) en este caso: c_pgsqlmpd

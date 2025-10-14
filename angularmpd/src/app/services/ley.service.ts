@@ -3,14 +3,21 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Ley, LeyCampos } from '../models/ley'
+import { RuntimeConfigService } from '../services/runtime-config.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class LeyService {
-url_mpd: string = environment.env_url_backend;
+//url_mpd: string = environment.env_url_backend;
+  url_mpd: string;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,
+              private config: RuntimeConfigService
+  ) {
+    this.url_mpd = this.config.get('env_url_backend')
+   }
 
   leyLista():Observable<Ley[]>{
 
