@@ -2,16 +2,22 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { RuntimeConfigService } from '../services/runtime-config.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class N8nService {
 //url_n8n: string = environment.env_url_n8n;
-url_n8n: string = "http://localhost:3000";
+//url_n8n: string = "http://localhost:3000";
+  url_n8n: string;
   url_cli: string = "";
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,
+              private config: RuntimeConfigService
+  ) {
+    this.url_n8n = this.config.get('env_url_backend')
+   }
 
   postN8n(form:any):Observable<any>{
     console.log("En postN8n - this.selectedN8n.nombre: " + form.chatInput + form.sessionId );

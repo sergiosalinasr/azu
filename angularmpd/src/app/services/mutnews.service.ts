@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { RuntimeConfigService } from '../services/runtime-config.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +10,15 @@ import { environment } from '../../environments/environment';
 export class MutnewsService {
   //url_n8n: string = environment.env_url_n8n;
   //url_mutnews: string = "http://localhost:8000";
-  url_mutnews: string = "http://localhost:3000";
+  //url_mutnews: string = "http://localhost:3000";
+    url_mutnews: string;
   url_cli: string = "";
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,
+              private config: RuntimeConfigService
+  ) {
+    this.url_mutnews = this.config.get('env_url_backend')
+   }
 
   postmutnews(form:any):Observable<any>{
     console.log("En postmutnews - form.chatInput: " + form.chatInput );

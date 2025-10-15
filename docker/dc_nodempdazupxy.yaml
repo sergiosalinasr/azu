@@ -24,6 +24,7 @@ services:
       VIRTUAL_PORT: 3000
       LETSENCRYPT_HOST: api.azudem.sersalret.com
       LETSENCRYPT_EMAIL: sergio.salinasr@gmail.com
+      URL_MLSERVING: ${URL_MLSERVING}
 
     expose:
       - "3000"
