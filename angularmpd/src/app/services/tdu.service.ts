@@ -2,15 +2,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { Tdu, TduCampos } from '../models/tdu'
+import { Tdu, TduCampos } from '../models/tdu';
+import { RuntimeConfigService } from '../services/runtime-config.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TduService {
-url_mpd: string = environment.env_url_backend;
+//url_mpd: string = environment.env_url_backend;
+  url_mpd: string = environment.env_url_backend;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,
+              private config: RuntimeConfigService
+  ) {
+    this.url_mpd = this.config.get('env_url_backend')
+   }
 
   tduLista():Observable<Tdu[]>{
 
