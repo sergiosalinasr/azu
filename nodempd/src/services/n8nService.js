@@ -46,8 +46,25 @@ const postN8nMutChat = async (payload) => {
   return r.json();
 };
 
+// Implementa un chatgpt personal usando las APIs via n8n
+const postN8nChatGPT = async (payload) => {
+  const CHAT_URL = 'https://n8n.sersalret.com/webhook/12af40e5-004f-4d93-869e-5acd2c6acb50/chat';
+  const r = await fetch(CHAT_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+
+  if (!r.ok) {
+    throw new Error(`Error HTTP: ${r.status}`);
+  }
+
+  return r.json();
+};
+
 module.exports = {
   postToN8nChat,
   postN8nUssChat,
-  postN8nMutChat
+  postN8nMutChat,
+  postN8nChatGPT
 };

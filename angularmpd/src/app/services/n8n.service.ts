@@ -57,6 +57,20 @@ export class N8nService {
 
   }
 
+  postn8nchatgpt(form:any):Observable<any>{
+    console.log("En postn8nchatgpt - this.selectedN8n.nombre: " + form.chatInput + form.sessionId );
+
+    this.url_cli = "/n8n/postn8nchatgpt";
+    
+    const url = this.url_n8n + this.url_cli;
+
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const body = { chatInput: form.chatInput, sessionId: form.sessionId };
+    console.log(`postn8nchatgpt url: ${url}`);
+    return this.http.post(url, body, { headers });
+
+  }
+
   postn8nxxxchat(form:any):Observable<any>{
     console.log("En postN8n - this.selectedN8n.nombre: " + form.chatInput + form.sessionId );
     

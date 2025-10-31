@@ -1,0 +1,74 @@
+.chat-container {
+display: flex;
+flex-direction: column;
+height: 70vh; /* ocupa toda la altura de la ventana */
+padding: 10px;
+box-sizing: border-box;
+font-size: 10px; /* tamaño base pequeño para todo el contenedor */
+}
+
+.chat-container h2 {
+font-size: 12px; /* título un poco más grande que el texto normal */
+}
+
+.chat-history {
+flex: 1; /* ocupa todo el espacio sobrante */
+overflow-y: auto; /* agrega scroll si se llena */
+margin-bottom: 8px;
+padding: 8px;
+border: 1px solid #ddd;
+border-radius: 8px;
+background: #fafafa;
+white-space: pre-line; /* respeta los \n */
+font-size: 14px; /* tamaño pequeño para los mensajes */
+}
+
+.chat-history > div {
+margin-bottom: 4px; /* espacio entre mensajes */
+}
+
+.chat-history .user {
+color: #000000;
+}
+
+.chat-history .bot {
+color: #000000;
+}
+
+.chat-history .system {
+color: #d93025;
+font-style: italic;
+}
+
+.chat-history strong {
+font-size: 10px; /* prefijos "Tú:", "IA:", etc. con el mismo tamaño */
+}
+
+.chat-input {
+display: flex;
+gap: 8px;
+flex-shrink: 0; /* evita que el input se reduzca al hacer scroll */
+font-size: 10px; /* tamaño pequeño */
+}
+
+.chat-input input {
+flex: 1;
+padding: 6px;
+font-size: 10px;
+border-radius: 6px;
+border: 1px solid #ccc;
+}
+
+.chat-input button {
+padding: 6px 12px;
+font-size: 10px;
+border-radius: 6px;
+border: none;
+background-color: #1a73e8;
+color: white;
+cursor: pointer;
+}
+
+.chat-input button:hover {
+background-color: #1557b0;
+}
