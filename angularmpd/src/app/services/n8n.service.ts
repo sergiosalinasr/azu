@@ -65,7 +65,7 @@ export class N8nService {
     const url = this.url_n8n + this.url_cli;
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const body = { chatInput: form.chatInput, sessionId: form.sessionId };
+    const body = { chatInput: form.chatInput, sessionId: form.sessionId, user_id: form.user_id, topic: form.topic };
     console.log(`postn8nchatgpt url: ${url}`);
     return this.http.post(url, body, { headers });
 

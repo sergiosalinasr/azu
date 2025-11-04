@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import { N8nService } from '../../services/n8n.service';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
 selector: 'app-chat',
@@ -12,6 +13,8 @@ export class N8nchatgptComponent implements AfterViewChecked {
 
 userInput: string = '';
 sessionId: string = '1234567';
+user_id: string = '';
+topic: string = 'n8n';
 chatHistory: { role: string, message: string }[] = [];
 id_Cliente: any = "";
 
@@ -19,7 +22,8 @@ private shouldScroll = false;
 
 constructor(
 private n8nService: N8nService,
-private activerouter: ActivatedRoute
+private activerouter: ActivatedRoute,
+private authService: AuthService
 ) { }
 
 ngOnInit(): void {
@@ -49,12 +53,14 @@ this.shouldScroll = true;
 
 const payload = {
 chatInput: this.userInput,
-sessionId: this.sessionId
+sessionId: this.sessionId,
+user_id: this.authService.getUserFromToken(),
+topic: this.topic
 };
 
 // Indicar que estamos esperando respuesta
 this.userInput = "Buscando...";
-
+console.error('n8nchatgpt.component/sendMessage/payload.user_id: ', payload.user_id);
 this.n8nService.postn8nchatgpt(payload).subscribe({
 next: (res) => {
 this.chatHistory.push({ role: 'bot', message: res?.output || 'No hay respuesta.' });

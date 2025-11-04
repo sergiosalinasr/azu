@@ -62,7 +62,9 @@ exports.postn8nmutchat = async (req, res) => {
 
 exports.postn8nchatgpt = async (req, res) => {
   try {
-    const { chatInput, sessionId } = req.body;
+    const { chatInput, sessionId, user_id, topic } = req.body;
+
+    console.log( `n8nController.js/postn8nchatgpt: chatInput: ${chatInput}, sessionId: ${sessionId}, user_id: ${user_id}, topic: ${topic} `)
 
     // Validar datos requeridos
     if (!chatInput || !sessionId) {
@@ -72,7 +74,7 @@ exports.postn8nchatgpt = async (req, res) => {
     }
 
     // Llamar al servicio
-    const response = await n8nService.postN8nChatGPT({ chatInput, sessionId });
+    const response = await n8nService.postN8nChatGPT({ chatInput, sessionId, user_id, topic });
     res.json(response);
   } catch (err) {
     console.error('Error en sendChatMessage:', err);

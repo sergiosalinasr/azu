@@ -264,5 +264,14 @@ export class AuthService {
     return false;
   }
 
+  // Retorna el nombre de usuario en Keycloak
+  getUserFromToken(): string {
+    const decoded = this.getDecodedToken();
+    if (!decoded || !decoded.resource_access) return "sinusuario";
+
+    return decoded.preferred_username;
+    
+  }
+
 
 }
